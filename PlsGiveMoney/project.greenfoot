@@ -1,8 +1,16 @@
 #Greenfoot properties
-#Tue Dec 05 15:53:02 EST 2017
+#Tue Dec 05 16:18:49 EST 2017
+class.Background.image=background.png
+simulation.speed=60
+mainWindow.width=850
+class.Background.superclass=greenfoot.World
+class.Ship.image=ship.png
 project.charset=UTF-8
 version=3.0.0
+class.Enemy.superclass=greenfoot.Actor
+class.Projectile.superclass=greenfoot.Actor
+world.lastInstantiated=Background
 mainWindow.y=40
 mainWindow.x=40
 mainWindow.height=600
-mainWindow.width=850
+class.Ship.superclass=greenfoot.Actor
