@@ -8,12 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Projectile extends SmoothMover
 {
-    /**
-     * Act - do whatever the Projectile wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private final Vector velocity;
+    
+    public Projectile(Vector velocity) {
+        this.velocity = velocity;
+    }
+    
     public void act() 
     {
-        // Add your action code here.
-    }    
+        moveDelta(velocity.scaled(getSpeed()));
+        if(isAtEdge()) {
+            getWorld().removeObject(this);
+        }
+    }
+    
+    protected double getSpeed() {
+        return 500.0;
+    }
 }

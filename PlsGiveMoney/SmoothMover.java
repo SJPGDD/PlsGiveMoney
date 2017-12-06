@@ -24,4 +24,12 @@ public abstract class SmoothMover extends Actor
         position.y += y;
         setLocation(position.rX(), position.rY());
     }
+    
+    public void moveDelta(Vector displacement) {
+        moveDelta(displacement.x, displacement.y);
+    }
+    
+    public void moveDelta(double x, double y) {
+        move(x * Background.delta, y * Background.delta);
+    }
 }

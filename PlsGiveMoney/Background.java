@@ -33,10 +33,33 @@ public class Background extends World
         long dt = now - lastCheck;
         lastCheck = now;
         delta = (dt / 1_000_000_000.0) * timeScale;
-        System.out.println(delta);
     }
     
     private void spawnShip() {
         addObject(new Ship(), WORLD_WIDTH / 2, PLAYER_HEIGHT);
+    }
+    
+    private static int lastButton;
+    private static Vector lastPosition;
+    private static void getMouseInfo() {
+        MouseInfo m = Greenfoot.getMouseInfo();
+        if(m != null) {
+            lastButton = m.getButton();
+            lastPosition = new Vector(m.getX(), m.getY());
+        }
+    }
+    
+    public static int getMouseButton() {
+        getMouseInfo();
+        return lastButton;
+    }
+    
+    public static Vector getMousePosition() {
+        try {
+            getMouseInfo();
+            return new Vector(lastPosition.x, lastPosition.y);
+        } catch(Exception e) {
+            return new Vector(0);
+        }
     }
 }
