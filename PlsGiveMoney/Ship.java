@@ -1,19 +1,19 @@
 import greenfoot.*;
 
-public class Ship extends Actor
+public class Ship extends SmoothMover
 {
     private static final int MOVE_SPEED = 480;
     
     public void act() 
     {
-        moveHorizontal();
+        readInput();
     }
     
-    public void moveHorizontal() {
+    public void readInput() {
         if(Greenfoot.isKeyDown("a")) {
-            setLocation((int) Math.round((getX() - MOVE_SPEED * Background.delta)), getY());
+            move(-MOVE_SPEED * Background.delta, 0);
         } else if (Greenfoot.isKeyDown("d")) {
-            setLocation((int) Math.round((getX() + MOVE_SPEED * Background.delta)), getY());
+            move(MOVE_SPEED * Background.delta, 0);
         }
     }
 }
