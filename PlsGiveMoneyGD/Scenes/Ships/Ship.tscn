@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="Ship" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Collider" type="Area2D" parent="."]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Collider"]
+
+

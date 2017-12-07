@@ -9,7 +9,7 @@ public class Ship extends SmoothMover
     
     private double cooldown;
     
-    public void act() 
+    public void act()
     {
         readInput();
         processCooldown();
