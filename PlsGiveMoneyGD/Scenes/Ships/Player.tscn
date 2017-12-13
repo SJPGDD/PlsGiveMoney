@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Ships/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Textures/Debug/48x48.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Ships/PlayerWeapon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Textures/Debug/48x48.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,10 +15,16 @@ extents = Vector2( 24, 24 )
 script = ExtResource( 2 )
 spawn = Vector2( 0, 0 )
 move_speed = 480
+start_health = 100
+
+[node name="PlayerWeapon" parent="." instance=ExtResource( 3 )]
+
+good_projectile = null
+bad_projectile = null
 
 [node name="Sprite" parent="."]
 
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape" parent="Collider"]
 

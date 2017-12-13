@@ -2,6 +2,9 @@ extends Node2D
 
 export(Vector2) var spawn = Vector2(0, 0)
 export(Vector2) var move_speed = 480
+export(int) var start_health = 100
+
+var health = start_health
 
 func _ready():
 	spawn()
@@ -13,6 +16,7 @@ func _process(delta):
 
 func spawn():
 	position = spawn
+	health = start_health
 
 func move_horizontally(delta):
 	if Input.is_key_pressed(KEY_A):
