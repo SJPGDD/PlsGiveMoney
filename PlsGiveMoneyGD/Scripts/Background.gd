@@ -1,5 +1,14 @@
 extends Sprite
 
+onready var debug = $"../UI/DebugReadout"
+
+var sc = 0
+func _process(delta):
+	debug.set_line(2, "Time Scale", Engine.get_time_scale())
+	sc += delta
+	Engine.set_time_scale(sin(sc) / 1.5 + 1)
+	material.set_shader_param("glitchAmount", sin(sc) * 5)
+
 func glitch(first_peak, second_peak, duration):
 	var player = $Glitch
 	var anim = player.get_animation("glitch")

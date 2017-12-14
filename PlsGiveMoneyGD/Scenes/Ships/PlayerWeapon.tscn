@@ -5,7 +5,8 @@
 [node name="PlayerWeapon" type="Sprite"]
 
 script = ExtResource( 1 )
-projectile_speed = 300
+projectile_speed = null
+firing_rate = null
 good_projectile = null
 bad_projectile = null
 

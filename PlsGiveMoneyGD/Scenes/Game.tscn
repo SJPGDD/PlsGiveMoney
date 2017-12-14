@@ -19,7 +19,7 @@ void fragment() {
 	val.r = texture(TEXTURE, UV + vec2(glitchAmount / float(res.x)), 0.0).r;
 	val.b = texture(TEXTURE, UV + vec2(-glitchAmount / float(res.x)), 0.0).b;
 	
-	val.rgb *= 0.8 + 0.2 * sin(frequency * FRAGCOORD.y + TIME);
+	//val.rgb *= 0.8 + 0.2 * sin(frequency * FRAGCOORD.y + TIME); Creates scanlines
 	
 	COLOR = val;
 }"
@@ -73,6 +73,8 @@ autoplay = ""
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 spawn = Vector2( 240, 800 )
+
+[node name="Projectiles" type="Node2D" parent="."]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
