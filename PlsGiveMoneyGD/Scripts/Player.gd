@@ -6,13 +6,17 @@ export(int) var start_health = 100
 
 var health = start_health
 
+onready var debug = $"../UI/DebugReadout"
+
 func _ready():
 	spawn()
-	set_process(true)
 
 func _process(delta):
 	move_horizontally(delta)
 	clamp_to_screen()
+	
+	debug.set_line(0, "Pos", position)
+	debug.set_line(1, "Health", health)
 
 func spawn():
 	position = spawn
