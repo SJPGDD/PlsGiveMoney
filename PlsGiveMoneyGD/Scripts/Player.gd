@@ -2,25 +2,28 @@ extends Node2D
 
 export(Vector2) var spawn = Vector2(0, 0)
 export(Vector2) var move_speed = 480
-export(int) var start_health = 100
 
-var health = start_health
+onready var value_ratio = load("res://Scripts/ValueRatio.gd").new(20, 1.0, 0.6, 2)
 
 onready var debug = $"../UI/DebugReadout"
 
 func _ready():
 	spawn()
+	
+	value_ratio.connect("below_minimum", self, "spawn")
 
 func _process(delta):
 	move_horizontally(delta)
 	clamp_to_screen()
 	
+	value_ratio.add_value(rand_range(0, 1.5))
+	
 	debug.set_line(0, "Pos", position)
-	debug.set_line(1, "Health", health)
+	debug.set_line(1, "Value Ratio", value_ratio.ratio)
 
 func spawn():
 	position = spawn
-	health = start_health
+	value_ratio.reset(20, 1.0)
 
 func move_horizontally(delta):
 	if Input.is_key_pressed(KEY_A):

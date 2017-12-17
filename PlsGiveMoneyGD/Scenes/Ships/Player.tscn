@@ -18,7 +18,6 @@ extents = Vector2( 24, 24 )
 script = ExtResource( 2 )
 spawn = Vector2( 0, 0 )
 move_speed = 480
-start_health = 100
 
 [node name="Sprite" parent="."]
 

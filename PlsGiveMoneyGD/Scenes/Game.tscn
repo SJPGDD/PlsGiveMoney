@@ -72,7 +72,7 @@ autoplay = ""
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
-spawn = Vector2( 240, 800 )
+spawn = Vector2( 360, 800 )
 
 [node name="Projectiles" type="Node2D" parent="."]
 
