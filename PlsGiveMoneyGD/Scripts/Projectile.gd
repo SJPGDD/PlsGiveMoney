@@ -1,7 +1,15 @@
 extends Sprite
 
+#Possible types for projectiles
+enum ProjectileType {
+	NONE, COMPANY_GOOD, COMPANY_BAD, PLAYER_GOOD, PLAYER_BAD
+}
+
 #The current velocity vector of the projectile
 var velocity = Vector2()
+
+#The type of the projectile, determines what should happen in collisions
+export(ProjectileType) var projectile_type
 
 #The other objects which this projectile should ignore
 #any overlaps with. For example, the Money projectile
@@ -12,6 +20,10 @@ export(PoolStringArray) var ignore_groups = []
 func _process(delta):
 	position += velocity * delta 
 
+#Called when the collision with this projectile and something else is handled
+func destroy():
+	queue_free()
+
 #Called when this projectile's collider overlaps
 #with another collider. If the other collider belongs
 #to an object in an ignored group, the function returns.
@@ -21,7 +33,7 @@ func _process(delta):
 func _collided(other_area):
 	for group in other_area.get_parent().get_groups():
 		if group in ignore_groups: return
-	print("%s collided with %s" % [get_name(), other_area.get_parent().get_name()])
+	$"/root/Game/Player".handle_collision(self, other_area.get_parent())
 
 #Called when the VisibilityNotifier2D reports that
 #this projectile has left the screen, at which time

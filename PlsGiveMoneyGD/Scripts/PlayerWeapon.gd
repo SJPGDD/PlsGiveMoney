@@ -21,14 +21,14 @@ var cooldown = 0
 #Checks for weapon select, updates the cooldown
 #then checks for weapon fire
 func _process(delta):
-	weapon_select()
+	_weapon_select()
 	cooldown -= delta
-	weapon_fire()
+	_weapon_fire()
 
 #If the "toggle_projectile" action is just pressed, then
 #the current_projectile will toggle between good and bad,
 #based on which is already selected
-func weapon_select():
+func _weapon_select():
 	if Input.is_action_just_pressed("toggle_projectile"):
 		if current_projectile == good_projectile: current_projectile = bad_projectile
 		else: current_projectile = good_projectile
@@ -40,16 +40,16 @@ func weapon_select():
 #are added as children of /root/Game/Projectiles. The cooldown is
 #then set as the reciprocal of firing rate, to prevent firing
 #for some fraction of a second
-func weapon_fire():
-	if Input.is_action_pressed("fire_projectile") and cooldown <= 0:
-		var dir = get_firing_direction()
+func _weapon_fire():
+	if Input.is_action_pressed("fire_projectile") && cooldown <= 0:
+		var dir = _get_firing_direction()
 		if dir.y > 0: return #No need to fire backwards
 		var projectile = current_projectile.instance()
-		projectile.position = global_position
+		projectile.position = global_position #Weapon is rel to player
 		projectile.velocity = dir * projectile_speed
 		$"/root/Game/Projectiles".add_child(projectile)
 		cooldown = 1.0 / firing_rate
 
 #Returns the unit vector pointing from the ship to the mouse cursor
-func get_firing_direction():
+func _get_firing_direction():
 	return get_local_mouse_position().normalized()

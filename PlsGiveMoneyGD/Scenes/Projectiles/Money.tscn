@@ -4,6 +4,7 @@
 
 [node name="Money" instance=ExtResource( 1 )]
 
+projectile_type = 3
 ignore_groups = PoolStringArray( "Projectile", "Player" )
 
 

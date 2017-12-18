@@ -14,6 +14,7 @@ extents = Vector2( 4, 4 )
 
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+projectile_type = 0
 ignore_groups = PoolStringArray( "Projectile" )
 
 [node name="Collider" type="Area2D" parent="."]
