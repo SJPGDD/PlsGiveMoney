@@ -34,7 +34,7 @@ func _process(delta):
 	_move_horizontally(delta)
 	_clamp_to_screen()
 	
-	score += score_per_second * value_ratio.ratio * delta
+	score += score_per_second * (value_ratio.ratio + 1) * delta
 	
 	debug.set_line(0, "Pos", position)
 	debug.set_line(1, "Value Ratio", value_ratio.ratio)
@@ -47,6 +47,9 @@ func spawn():
 	score = 0
 	value_ratio.reset(20, 0.0)
 
+#Called every time that a projectile hits a target which it is not 
+#set to ignore. Determines what should happen to the value ratio,
+#the projectile, and the target based on projectile type and target type
 func handle_collision(projectile, target):
 	match projectile.projectile_type:
 		projectile.ProjectileType.NONE: pass
