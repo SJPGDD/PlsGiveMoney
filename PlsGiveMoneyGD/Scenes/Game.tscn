@@ -10,14 +10,14 @@
 code = "shader_type canvas_item;
 
 uniform float frequency;
-uniform float glitchAmount;
+uniform float glitch_amount;
 
 void fragment() {
 	vec4 val = texture(TEXTURE, UV);
 	ivec2 res = textureSize(TEXTURE, 0);
 	
-	val.r = texture(TEXTURE, UV + vec2(glitchAmount / float(res.x)), 0.0).r;
-	val.b = texture(TEXTURE, UV + vec2(-glitchAmount / float(res.x)), 0.0).b;
+	val.r = texture(TEXTURE, UV + vec2(glitch_amount / float(res.x)), 0.0).r;
+	val.b = texture(TEXTURE, UV + vec2(-glitch_amount / float(res.x)), 0.0).b;
 	
 	//val.rgb *= 0.8 + 0.2 * sin(frequency * FRAGCOORD.y + TIME); Creates scanlines
 	
@@ -29,7 +29,7 @@ void fragment() {
 render_priority = 0
 shader = SubResource( 1 )
 shader_param/frequency = 50.0
-shader_param/glitchAmount = 0.0
+shader_param/glitch_amount = 0.0
 
 [sub_resource type="Animation" id=3]
 
@@ -73,6 +73,9 @@ autoplay = ""
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 spawn = Vector2( 360, 800 )
+ratio_buffer_size = 20
+minimum_ratio = 0.6
+score_per_second = 1000
 
 [node name="Projectiles" type="Node2D" parent="."]
 

@@ -1,14 +1,10 @@
 extends Sprite
 
-onready var debug = $"../UI/DebugReadout"
-
-var sc = 0
-func _process(delta):
-	debug.set_line(2, "Time Scale", Engine.get_time_scale())
-	sc += delta
-	Engine.set_time_scale(sin(sc) / 1.5 + 1)
-	material.set_shader_param("glitchAmount", sin(sc) * 5)
-
+#Controls the color aberration shader
+#attached to the background sprite. The strength
+#of the shader will go from 0..first_peak, then
+#from first_peak..second_peak, then from second_peak
+#to 0 over duration in seconds.
 func glitch(first_peak, second_peak, duration):
 	var player = $Glitch
 	var anim = player.get_animation("glitch")
