@@ -55,6 +55,8 @@ tracks/0/keys = {
 [node name="Game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+company_hits_player = 0.5
+player_hits_company = 1.0
 
 [node name="Background" type="Sprite" parent="." index="0"]
 

@@ -47,41 +47,6 @@ func spawn():
 	score = 0
 	value_ratio.reset(20, 0.0)
 
-#Called every time that a projectile hits a target which it is not 
-#set to ignore. Determines what should happen to the value ratio,
-#the projectile, and the target based on projectile type and target type.
-#Yes, this is spaghetti, but better to have all the logic in one place
-#than individually handled by the objects themselves.
-#TODO: Refactor out to a different script, like GameController
-func handle_collision(projectile, target):
-	match projectile.projectile_type:
-		projectile.ProjectileType.NONE: pass
-		projectile.ProjectileType.COMPANY_GOOD:
-			if target == self: value_ratio.add_value(0.5)
-		projectile.ProjectileType.COMPANY_BAD:
-			if target == self: value_ratio.add_value(-0.5)
-		projectile.ProjectileType.PLAYER_GOOD:
-			if target.is_in_group("Company"):
-				if target.company_type == target.CompanyType.GOOD:
-					value_ratio.add_value(1.0)
-					target.destroy()
-				elif target.company_type == target.CompanyType.BAD:
-					value_ratio.add_value(-1.0)
-				elif target.company_type == target.CompanyType.NONE:
-					value_ratio.add_value(0.0)
-					target.destroy()
-		projectile.ProjectileType.PLAYER_BAD:
-			if target.is_in_group("Company"):
-				if target.company_type == target.CompanyType.GOOD:
-					value_ratio.add_value(-1.0)
-				elif target.company_type == target.CompanyType.BAD:
-					value_ratio.add_value(1.0)
-					target.destroy()
-				elif target.company_type == target.CompanyType.NONE:
-					value_ratio.add_value(0.0)
-					target.destory()
-	projectile.destroy()
-
 #Moves the player horizontally either left or
 #right based on the actions "move_left/right",
 #adjusted for move_speed and delta

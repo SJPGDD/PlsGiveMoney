@@ -9,7 +9,7 @@ enum ProjectileType {
 var velocity = Vector2()
 
 #The type of the projectile, determines what should happen in collisions
-export(ProjectileType) var projectile_type
+export(ProjectileType) var type
 
 #The other objects which this projectile should ignore
 #any overlaps with. For example, the Money projectile
@@ -33,7 +33,7 @@ func destroy():
 func _collided(other_area):
 	for group in other_area.get_parent().get_groups():
 		if group in ignore_groups: return
-	$"/root/Game/Player".handle_collision(self, other_area.get_parent())
+	$"/root/Game".handle_collision(self, other_area.get_parent())
 
 #Called when the VisibilityNotifier2D reports that
 #this projectile has left the screen, at which time

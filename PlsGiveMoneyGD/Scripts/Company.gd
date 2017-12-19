@@ -9,7 +9,7 @@ enum CompanyType {
 export(int) var move_speed = 480
 
 #Configurable variable for this company's type
-export(CompanyType) var company_type
+export(CompanyType) var type
 
 #Scene for the projectile this company fires (if any)
 export(PackedScene) var projectile

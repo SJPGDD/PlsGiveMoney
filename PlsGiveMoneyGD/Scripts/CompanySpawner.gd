@@ -1,25 +1,17 @@
 extends Node2D
 
-onready var company_spawn_data = register_companies()
-
-func register_companies():
-	var array = []
-	var current_company
-	
-	current_company = CompanySpawnParams.new()
-	current_company.company = load("res://Scenes/Ships/Company.tscn")
-	current_company.area = Rect2(0, 0, 720, 400)
-	current_company.chance = 0.007
-	current_company.group_min = 1
-	current_company.group_max = 4
-	current_company.min_interval = 10
-	array.append(current_company)
-	
-	current_company = CompanySpawnParams.new()
-	
-	return array
+onready var company_spawn_data = _register_companies()
 
 func _process(delta):
+	_run_spawner(delta)
+
+#Every _process frame, this function iterates through the company spawn
+#data to decrement cooldowns. If a spawn_data is ready to spawn again,
+#and its random chance is triggered, then the spawn_data's cooldown 
+#is again set to its minimum interval, then a random number of companies
+#between group_min and group_max are spawned, at random positions inside
+#the area of the spawn_data.
+func _run_spawner(delta):
 	for data in company_spawn_data:
 		data.cooldown -= delta
 		if data.cooldown <= 0 && randf() < data.chance:
@@ -32,6 +24,41 @@ func _process(delta):
 				company.position.y = rand_range(ap.y, ap.y + ad.y)
 				add_child(company)
 
+#Populates the company_spawn_data array with the different companies
+#and the params for spawning them. This is the function to modify
+#when adding new companies to the game (in addition to their inherited scene)
+func _register_companies():
+	var array = []
+	var company_data
+	
+	#    Generic Company (Debug)
+	company_data = CompanySpawnParams.new()
+	company_data.company = load("res://Scenes/Ships/Company.tscn")
+	company_data.area = Rect2(0, 0, 720, 400)
+	company_data.chance = 0.007
+	company_data.group_min = 1
+	company_data.group_max = 4
+	company_data.min_interval = 10
+	array.append(company_data)
+	
+	#    Buzzard (TENTATIVE PARODY NAMES)
+	#company_data = CompanySpawnParams.new()
+	
+	#    REE-A
+	
+	#    Act-Revision
+	
+	#    Ubitener Get it? Ubi is where in latin, so, soft in latin, Ubi Tener
+	
+	return array
+
+#Object to encapsulate the different parameters for spawning a company.
+#Includes PackedScene for the company, the area on-screen that it may
+#spawn in, the probability that it will spawn (0..1) on any given _process,
+#the minimum number to spawn at a time, the maximum number to spawn at a time,
+#and the minimum amount of time between spawn waves for this company. The
+#cooldown var tracks the amount of time remaining until this company can
+#spawn another wave.
 class CompanySpawnParams:
 	var company
 	var area
