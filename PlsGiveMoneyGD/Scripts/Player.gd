@@ -49,7 +49,10 @@ func spawn():
 
 #Called every time that a projectile hits a target which it is not 
 #set to ignore. Determines what should happen to the value ratio,
-#the projectile, and the target based on projectile type and target type
+#the projectile, and the target based on projectile type and target type.
+#Yes, this is spaghetti, but better to have all the logic in one place
+#than individually handled by the objects themselves.
+#TODO: Refactor out to a different script, like GameController
 func handle_collision(projectile, target):
 	match projectile.projectile_type:
 		projectile.ProjectileType.NONE: pass
@@ -64,6 +67,9 @@ func handle_collision(projectile, target):
 					target.destroy()
 				elif target.company_type == target.CompanyType.BAD:
 					value_ratio.add_value(-1.0)
+				elif target.company_type == target.CompanyType.NONE:
+					value_ratio.add_value(0.0)
+					target.destroy()
 		projectile.ProjectileType.PLAYER_BAD:
 			if target.is_in_group("Company"):
 				if target.company_type == target.CompanyType.GOOD:
@@ -71,6 +77,9 @@ func handle_collision(projectile, target):
 				elif target.company_type == target.CompanyType.BAD:
 					value_ratio.add_value(1.0)
 					target.destroy()
+				elif target.company_type == target.CompanyType.NONE:
+					value_ratio.add_value(0.0)
+					target.destory()
 	projectile.destroy()
 
 #Moves the player horizontally either left or

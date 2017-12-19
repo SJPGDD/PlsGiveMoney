@@ -21,14 +21,14 @@ ratio_buffer_size = 20
 minimum_ratio = -0.75
 score_per_second = 1000
 
-[node name="Sprite" parent="."]
+[node name="Sprite" parent="." index="0"]
 
 texture = ExtResource( 3 )
 
-[node name="CollisionShape" parent="Collider"]
+[node name="CollisionShape" parent="Collider" index="0"]
 
 shape = SubResource( 1 )
 
-[node name="PlayerWeapon" parent="." instance=ExtResource( 4 )]
+[node name="PlayerWeapon" parent="." index="2" instance=ExtResource( 4 )]
 
 

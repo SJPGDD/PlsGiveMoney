@@ -17,7 +17,7 @@ script = ExtResource( 2 )
 projectile_type = 0
 ignore_groups = PoolStringArray( "Projectile" )
 
-[node name="Collider" type="Area2D" parent="."]
+[node name="Collider" type="Area2D" parent="." index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -27,11 +27,11 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="CollisionShape" type="CollisionShape2D" parent="Collider"]
+[node name="CollisionShape" type="CollisionShape2D" parent="Collider" index="0"]
 
 shape = SubResource( 1 )
 
-[node name="OffScreen" type="VisibilityNotifier2D" parent="."]
+[node name="OffScreen" type="VisibilityNotifier2D" parent="." index="1"]
 
 rect = Rect2( -4, -4, 8, 8 )
 

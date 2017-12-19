@@ -60,3 +60,6 @@ func _weapon_fire():
 		projectile.velocity = dir * projectile_speed
 		$"/root/Game/Projectiles".add_child(projectile)
 		cooldown = 1.0 / firing_rate
+
+func _get_firing_direction():
+	return (player.position - position).normalized()
