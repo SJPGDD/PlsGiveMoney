@@ -60,11 +60,13 @@ player_hits_company = 1.0
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
+self_modulate = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 material = SubResource( 2 )
 scale = Vector2( 3.18584, 2.99003 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="Glitch" type="AnimationPlayer" parent="Background" index="0"]
 
