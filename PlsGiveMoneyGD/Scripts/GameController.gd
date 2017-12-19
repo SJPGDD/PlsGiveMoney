@@ -4,6 +4,7 @@ export(float) var company_hits_player = 0.5
 export(float) var player_hits_company = 1.0
 
 onready var player = $Player
+onready var background = $Background
 
 #Duplicate enum from Projectile.gd, copy changes from there
 enum ProjectileType {
@@ -26,9 +27,13 @@ func _ready():
 func handle_collision(projectile, target):
 	match projectile.type:
 		ProjectileType.COMPANY_GOOD:
-			if target == player: player.value_ratio.add_value(company_hits_player)
+			if target == player: 
+				player.value_ratio.add_value(company_hits_player)
 		ProjectileType.COMPANY_BAD:
-			if target == player: player.value_ratio.add_value(-company_hits_player)
+			if target == player: 
+				player.value_ratio.add_value(-company_hits_player)
+				background.glitch(5, -5, 0.2)
+				background.color_jump(Color(1, 0.75, 0.75))
 		ProjectileType.PLAYER_GOOD, ProjectileType.PLAYER_BAD:
 			if target.is_in_group("Company"):
 				if target.type == CompanyType.NONE:
@@ -39,6 +44,8 @@ func handle_collision(projectile, target):
 					target.destroy()
 				else:
 					player.value_ratio.add_value(-player_hits_company)
+					background.glitch(10, -10, 0.2)
+					background.color_jump(Color(1, 0.5, 0.5))
 	projectile.destroy()
 
 #Returns whether a good projectile hit a good company or a bad projectile
