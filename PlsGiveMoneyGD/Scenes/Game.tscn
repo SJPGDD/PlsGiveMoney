@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/GameController.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Textures/Backgrounds/background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/Backgrounds/Space.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Background.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Ships/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/CompanySpawner.gd" type="Script" id=5]
@@ -61,7 +61,7 @@ player_hits_company = 1.0
 [node name="Background" type="Sprite" parent="." index="0"]
 
 material = SubResource( 2 )
-scale = Vector2( 1.5, 1.40625 )
+scale = Vector2( 3.18584, 2.99003 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
@@ -77,15 +77,15 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="Player" parent="." index="1" instance=ExtResource( 4 )]
+[node name="Projectiles" type="Node2D" parent="." index="1"]
+
+[node name="Player" parent="." index="2" instance=ExtResource( 4 )]
 
 spawn = Vector2( 360, 800 )
 
-[node name="Companies" type="Node2D" parent="." index="2"]
+[node name="Companies" type="Node2D" parent="." index="3"]
 
 script = ExtResource( 5 )
-
-[node name="Projectiles" type="Node2D" parent="." index="3"]
 
 [node name="UI" type="CanvasLayer" parent="." index="4"]
 
