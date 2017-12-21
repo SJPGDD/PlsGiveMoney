@@ -52,7 +52,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="Game" type="Node2D" index="0"]
+[node name="Game" type="Node2D"]
 
 script = ExtResource( 1 )
 company_hits_player = 0.5
