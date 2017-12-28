@@ -11,8 +11,12 @@ config_version=3
 [application]
 
 config/name="Pls Give Money"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+SceneSwitch="*res://Scenes/SceneSwitch.tscn"
 
 [display]
 

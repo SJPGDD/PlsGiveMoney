@@ -35,7 +35,7 @@ shader_param/glitch_amount = 0.0
 
 [sub_resource type="Animation" id=3]
 
-resource_name = "glitch"
+resource_name = "Glitch"
 length = 1.0
 loop = false
 step = 0.1
@@ -66,14 +66,14 @@ scale = Vector2( 3.18584, 2.99003 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Glitch" type="AnimationPlayer" parent="Background" index="0"]
 
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/glitch = SubResource( 3 )
+anims/Glitch = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
