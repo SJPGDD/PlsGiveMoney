@@ -5,6 +5,7 @@ export(float) var player_hits_company = 1.0
 
 onready var player = $Player
 onready var background = $Background
+onready var value_ratio = $UI/ValueRatio
 
 #Duplicate enum from Projectile.gd, copy changes from there
 enum ProjectileType {
@@ -18,6 +19,9 @@ enum CompanyType {
 
 func _ready():
 	randomize()
+
+func _process(delta):
+	_refresh_ui()
 
 #Called every time that a projectile hits a target which it is not 
 #set to ignore. Determines what should happen to the value ratio,
@@ -37,7 +41,7 @@ func handle_collision(projectile, target):
 		ProjectileType.PLAYER_GOOD, ProjectileType.PLAYER_BAD:
 			if target.is_in_group("Company"):
 				if target.type == CompanyType.NONE:
-					player.value_ratio.add_value(0.0)
+					player.value_ratio.add_value(1.0)
 					target.destroy()
 				elif _company_type_match(projectile.type, target.type):
 					player.value_ratio.add_value(player_hits_company)
@@ -54,3 +58,7 @@ func _company_type_match(proj_type, comp_type):
 	var good = (proj_type == ProjectileType.PLAYER_GOOD && comp_type == CompanyType.GOOD)
 	var bad = (proj_type == ProjectileType.PLAYER_BAD && comp_type == CompanyType.BAD)
 	return good || bad
+
+func _refresh_ui():
+	#Value Ratio Display, smoothly interpolate from the old value to the new
+	value_ratio.ratio = lerp(value_ratio.ratio, player.value_ratio.ratio, 0.07)

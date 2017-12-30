@@ -6,7 +6,11 @@ path="res://.import/Menu.wav-036eec9c2528e217b7d6490e067abb99.sample"
 
 [deps]
 
+source_file="res://Assets/Audio/Music/Menu.wav"
 source_md5="9723b6e6c3167ad277a0545a73ac8129"
+
+dest_files=[ "res://.import/Menu.wav-036eec9c2528e217b7d6490e067abb99.sample" ]
+dest_md5="0be5ca9695ff281b806331e11453ece3"
 
 [params]
 
