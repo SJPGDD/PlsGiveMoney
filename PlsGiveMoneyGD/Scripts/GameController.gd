@@ -5,7 +5,9 @@ export(float) var player_hits_company = 1.0
 
 onready var player = $Player
 onready var background = $Background
-onready var value_ratio = $UI/ValueRatio
+onready var value_ratio = $UI/ValueRatioDisplay
+
+var lost = false
 
 #Duplicate enum from Projectile.gd, copy changes from there
 enum ProjectileType {
@@ -59,6 +61,14 @@ func _company_type_match(proj_type, comp_type):
 	var bad = (proj_type == ProjectileType.PLAYER_BAD && comp_type == CompanyType.BAD)
 	return good || bad
 
+#Called every update to ensure that the UI components contain the relevant data
 func _refresh_ui():
 	#Value Ratio Display, smoothly interpolate from the old value to the new
 	value_ratio.ratio = lerp(value_ratio.ratio, player.value_ratio.ratio, 0.07)
+
+func lose():
+	if lost: return; else: lost = true
+	var things_to_stop = [$Player, $Player/PlayerWeapon, $Companies]
+	for thing in things_to_stop:
+		thing.set_process(false)
+	$UI/LossScreen/Lose.play("Lose")

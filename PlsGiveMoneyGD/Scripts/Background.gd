@@ -18,9 +18,11 @@ func glitch(first_peak, second_peak, duration):
 		anim.track_insert_key(0, i * duration / 3.0, vals[i])
 	player.play("Glitch")
 
+#Makes the background color immediately modulate to the color param
 func color_jump(color):
 	modulate = color
 
+#Restores the modulate to white (none) over time
 func _lerp_reset_color():
 	modulate.r = lerp(modulate.r, 1.0, 0.07)
 	modulate.g = lerp(modulate.g, 1.0, 0.07)

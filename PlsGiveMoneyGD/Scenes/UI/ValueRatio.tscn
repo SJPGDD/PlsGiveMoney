@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Textures/UI/ValueRatioBase.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Fonts/Bungee-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/ValueRatioDisplay.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Fonts/Bungee-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="Shader" id=1]
 
@@ -38,6 +39,7 @@ float scanline(float uv, float time) {
 void fragment() {
 	COLOR = texture(TEXTURE, UV) * logistic_color(UV.x) + ratio_line(UV.x);
 	COLOR.a *= scanline(UV.x, TIME);
+	COLOR = min(COLOR, vec4(1, 1, 1, 1));
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -48,17 +50,16 @@ shader_param/ratio = 0.0
 shader_param/multiplier = 10.0
 shader_param/left_color = Vector3( 1, 0, 1 )
 shader_param/right_color = Vector3( 0, 1, 1 )
-_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="DynamicFont" id=3]
 
 size = 48
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="ValueRatio" type="TextureRect"]
+[node name="ValueRatioDisplay" type="TextureRect"]
 
 material = SubResource( 2 )
 anchor_left = 0.0
@@ -74,6 +75,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 1 )
 stretch_mode = 0
+script = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Rect" ]
 
 [node name="Minus" type="Label" parent="." index="0"]

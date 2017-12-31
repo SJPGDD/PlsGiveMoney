@@ -68,7 +68,7 @@ func _get_ratio():
 #the maximum or the minimum, and emits
 #the corresponding signals if needed.
 func _check_boundaries():
-	if _get_ratio() < minimum: 
+	if _get_ratio() <= minimum: 
 		emit_signal("below_minimum")
-	elif _get_ratio() > maximum:
+	elif _get_ratio() >= maximum:
 		emit_signal("above_maximum")

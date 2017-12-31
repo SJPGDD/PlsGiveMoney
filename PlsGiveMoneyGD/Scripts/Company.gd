@@ -54,12 +54,14 @@ func _velocity_for_time(time_alive):
 #of the projectile's instantiation
 func _weapon_fire():
 	if cooldown <= 0 && projectile != null && player != null:
-		var dir = (player.position - position).normalized()
+		var dir = _get_firing_direction()
 		var projectile = self.projectile.instance()
 		projectile.position = position
 		projectile.velocity = dir * projectile_speed
 		$"/root/Game/Projectiles".add_child(projectile)
 		cooldown = 1.0 / firing_rate
 
+#Returns the unit vector direction for the company to shoot towards. By default,
+#shoots towards the player, but can be overriden.
 func _get_firing_direction():
 	return (player.position - position).normalized()

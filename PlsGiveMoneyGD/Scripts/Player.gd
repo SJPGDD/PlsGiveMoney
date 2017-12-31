@@ -10,13 +10,13 @@ export(Vector2) var move_speed = 480
 export(int) var ratio_buffer_size = 20
 
 #The ratio at which the game is lost
-export(float) var minimum_ratio = -0.75
+export(float) var minimum_ratio = -0.5
 
 #Points/sec when value ratio is 1.0
 export(int) var score_per_second = 1_000
 
 #Instance of ValueRatio class, which is created using the above init values
-onready var value_ratio = load("res://Scripts/ValueRatio.gd").new(ratio_buffer_size, 0, minimum_ratio, 1.0)
+onready var value_ratio = load("res://Scripts/ValueRatio.gd").new(ratio_buffer_size, 0, minimum_ratio, -minimum_ratio)
 
 #Reference to the debug label for displaying variables
 onready var debug = $"../UI/DebugReadout"
@@ -27,6 +27,7 @@ var score = 0
 #Calls spawn when the player is added to the SceneTree
 func _ready():
 	spawn()
+	value_ratio.connect("below_minimum", get_parent(), "lose")
 
 #Updates horizontal position, increments score,
 #and updates debug display as needed
