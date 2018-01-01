@@ -1,6 +1,6 @@
 extends Node2D
 
-export(float) var company_hits_player = 0.5
+export(float) var company_hits_player = 1.0
 export(float) var player_hits_company = 1.0
 
 onready var player = $Player

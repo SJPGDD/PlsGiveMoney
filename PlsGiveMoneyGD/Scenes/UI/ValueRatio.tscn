@@ -18,12 +18,12 @@ float sigmoid(float t) {
 }
 
 vec4 ratio_line(float uvx) {
-	if(abs(ratio) >= 0.5) return vec4(0);
-	return vec4(vec3(1.0 / pow((uvx + ratio - 0.5) * 100.0, 2)), 0);
+	if(abs(ratio) >= 1.0) return vec4(0);
+	return vec4(vec3(1.0 / pow((uvx + (ratio / 2.0) - 0.5) * 100.0, 2)), 0);
 }
 
 vec4 logistic_color(float uvx) {
-	float sig = sigmoid((uvx + ratio - 0.5) * multiplier);
+	float sig = sigmoid((uvx + (ratio / 2.0) - 0.5) * multiplier);
 	return vec4(left_color * (1.0 - sig) + right_color * sig, 1);
 }
 

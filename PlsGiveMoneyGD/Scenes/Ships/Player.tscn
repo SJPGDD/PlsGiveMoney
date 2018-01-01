@@ -35,8 +35,8 @@ flag_disable_z = true
 spread = 0.0
 flatness = 0.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 50.0
-initial_velocity_random = 0.0
+initial_velocity = 300.0
+initial_velocity_random = 1.0
 angular_velocity = 0.0
 angular_velocity_random = 0.0
 orbit_velocity = 0.0
@@ -52,7 +52,7 @@ damping_random = 0.0
 angle = 360.0
 angle_random = 1.0
 scale = 0.02
-scale_random = 0.0
+scale_random = 0.01
 scale_curve = SubResource( 3 )
 color = Color( 0, 0.0305176, 0.03125, 1 )
 hue_variation = 0.0
@@ -69,7 +69,7 @@ _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Player" index="0" groups=[
+[node name="Player" groups=[
 "Player",
 ] instance=ExtResource( 1 )]
 
@@ -77,6 +77,7 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 spawn = Vector2( 0, 0 )
 move_speed = 480
+movement_snap = 0.3
 ratio_buffer_size = 20
 minimum_ratio = -0.75
 score_per_second = 1000
@@ -84,20 +85,20 @@ score_per_second = 1000
 [node name="EngineLeft" type="Particles2D" parent="." index="0"]
 
 material = SubResource( 1 )
-position = Vector2( -3, 24 )
+position = Vector2( -3, 20 )
 rotation = 1.5708
 emitting = true
-amount = 500
-lifetime = 0.3
+amount = 300
+lifetime = 0.1
 one_shot = false
 preprocess = 0.0
 speed_scale = 1.0
 explosiveness = 0.0
-randomness = 1.0
+randomness = 0.0
 fixed_fps = 0
-fract_delta = true
+fract_delta = false
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = false
+local_coords = true
 draw_order = 0
 process_material = SubResource( 4 )
 texture = ExtResource( 3 )
@@ -109,20 +110,20 @@ _sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "T
 [node name="EngineRight" type="Particles2D" parent="." index="1"]
 
 material = SubResource( 1 )
-position = Vector2( 3, 24 )
+position = Vector2( 3, 20 )
 rotation = 1.5708
 emitting = true
-amount = 500
-lifetime = 0.3
+amount = 300
+lifetime = 0.1
 one_shot = false
 preprocess = 0.0
 speed_scale = 1.0
 explosiveness = 0.0
-randomness = 1.0
+randomness = 0.0
 fixed_fps = 0
-fract_delta = true
+fract_delta = false
 visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = false
+local_coords = true
 draw_order = 0
 process_material = SubResource( 4 )
 texture = ExtResource( 3 )

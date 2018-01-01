@@ -9,4 +9,5 @@ func _get_ratio():
 
 #Sets the ratio shader param to the new value
 func _set_ratio(ratio):
+	#Ingame value varies from -1 to 1, but the shader accepts -0.5 to 0.5
 	material.set_shader_param("ratio", ratio)
