@@ -63,7 +63,7 @@ use_filter = false
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Game" type="Node2D" index="0"]
+[node name="Game" type="Node2D"]
 
 script = ExtResource( 1 )
 company_hits_player = 1.0
@@ -71,7 +71,6 @@ player_hits_company = 1.0
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
-self_modulate = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 material = SubResource( 2 )
 scale = Vector2( 3.18584, 2.99003 )
 texture = ExtResource( 2 )

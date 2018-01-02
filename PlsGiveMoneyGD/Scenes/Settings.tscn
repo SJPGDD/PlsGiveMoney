@@ -38,10 +38,10 @@ script = SubResource( 2 )
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
-self_modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 scale = Vector2( 3.18584, 2.99003 )
 texture = ExtResource( 1 )
 centered = false
+_sections_unfolded = [ "Visibility" ]
 
 [node name="UI" type="Control" parent="." index="1"]
 

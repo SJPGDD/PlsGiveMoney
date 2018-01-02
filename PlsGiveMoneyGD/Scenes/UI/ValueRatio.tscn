@@ -59,7 +59,7 @@ use_filter = true
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="ValueRatioDisplay" type="TextureRect" index="0"]
+[node name="ValueRatioDisplay" type="TextureRect"]
 
 material = SubResource( 2 )
 anchor_left = 0.0

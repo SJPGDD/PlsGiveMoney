@@ -46,10 +46,10 @@ script = SubResource( 2 )
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
-self_modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 scale = Vector2( 3.18584, 2.99003 )
 texture = ExtResource( 1 )
 centered = false
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="UI" type="Control" parent="." index="1"]
 
@@ -154,6 +154,6 @@ If your [color=#82aff0]Value[/color] drops too low, the game ends.
 visible_characters = -1
 percent_visible = 1.0
 override_selected_font_color = false
-_sections_unfolded = [ "Anchor", "BBCode", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "custom_colors", "custom_constants", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "BBCode", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
 
