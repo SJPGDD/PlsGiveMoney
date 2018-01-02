@@ -6,7 +6,11 @@ path="res://.import/Space.png-b01d844b8aed5bc6854f3f6d57bd947b.stex"
 
 [deps]
 
-source_md5="e8e5d148f47b83145f08b0bb693ee161"
+source_file="res://Assets/Textures/Backgrounds/Space.png"
+source_md5="3ff438e1c97b957a3db2cdb5aff3f29f"
+
+dest_files=[ "res://.import/Space.png-b01d844b8aed5bc6854f3f6d57bd947b.stex" ]
+dest_md5="82fcf998862c6cb93f74e19c3965fef9"
 
 [params]
 

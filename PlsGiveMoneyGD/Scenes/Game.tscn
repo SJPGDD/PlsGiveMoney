@@ -71,8 +71,8 @@ player_hits_company = 1.0
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
+self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
 material = SubResource( 2 )
-scale = Vector2( 3.18584, 2.99003 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 3 )
@@ -158,6 +158,7 @@ mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.509804, 0.686275, 0.941176, 1 )
 text = "0"
 align = 1
 valign = 1

@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Fonts/BungeeDynamic.tres" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Textures/Backgrounds/LossMeme.jpg" type="Texture" id=3]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=1]
 
 code = "shader_type canvas_item;
 
@@ -25,18 +25,18 @@ void fragment() {
 	COLOR.rgb *= modulate;
 }"
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
-shader = SubResource( 4 )
-shader_param/blur = 0.002
+shader = SubResource( 1 )
+shader_param/blur = 0.0
 shader_param/iter = 7
 shader_param/half = 3
 shader_param/itersq = 49
-shader_param/modulate = 0.5
+shader_param/modulate = 1.0
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 
 size = 72
 use_mipmaps = false
@@ -44,7 +44,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 
 size = 18
 use_mipmaps = false
@@ -52,7 +52,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 
 length = 1.0
 loop = false
@@ -108,9 +108,10 @@ tracks/3/keys = {
 } ]
 }
 
-[node name="LossScreen" type="Panel" index="0"]
+[node name="LossScreen" type="Panel"]
 
-material = SubResource( 5 )
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 2 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -139,7 +140,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.945098, 0.509804, 0.690196, 1 )
 text = "You Lose"
 percent_visible = 1.0
@@ -161,7 +162,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.300903, 0.396362, 0.53125, 1 )
 text = "Please enjoy this conciliatory meme"
 align = 1
@@ -185,7 +186,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.300903, 0.396362, 0.53125, 1 )
 text = "Or Press Any Key to Return to Main Menu
 "
@@ -219,7 +220,7 @@ _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Rect", "S
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/Lose = SubResource( 7 )
+anims/Lose = SubResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

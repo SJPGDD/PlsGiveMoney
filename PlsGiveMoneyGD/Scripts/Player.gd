@@ -72,3 +72,4 @@ func _clamp_to_screen():
 	var tex_half_width = $Sprite.texture.get_size().x / 2
 	var screen_width = get_viewport_rect().size.x
 	position.x = clamp(position.x, tex_half_width, screen_width - tex_half_width)
+	target_position.x = clamp(target_position.x, tex_half_width, screen_width - tex_half_width)

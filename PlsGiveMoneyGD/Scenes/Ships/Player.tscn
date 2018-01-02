@@ -69,7 +69,7 @@ _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Player" groups=[
+[node name="Player" index="0" groups=[
 "Player",
 ] instance=ExtResource( 1 )]
 
