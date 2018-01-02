@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Textures/Backgrounds/Space.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/BungeeDynamic.tres" type="DynamicFontData" id=2]
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Node2D
+
+func _input(ev):
+	if ev is InputEventKey:
+		$\"/root/SceneSwitch\".switch_to(\"res://Scenes/Menu.tscn\")"
+
+[sub_resource type="DynamicFontData" id=4]
+
+font_path = "res://Assets/Fonts/Bungee-Regular.ttf"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 72
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 18
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Settings" type="Node2D"]
+
+script = SubResource( 2 )
+
+[node name="Background" type="Sprite" parent="." index="0"]
+
+self_modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+scale = Vector2( 3.18584, 2.99003 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="UI" type="Control" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Title" type="Label" parent="UI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 720.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.509804, 0.690196, 0.945098, 1 )
+text = "Settings"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Subtitle" type="Label" parent="UI" index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = 760.0
+margin_right = 700.0
+margin_bottom = 829.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.300903, 0.396362, 0.53125, 1 )
+text = "Press Any Key to Return to Main Menu
+"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+

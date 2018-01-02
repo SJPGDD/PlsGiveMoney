@@ -33,11 +33,11 @@ float safesign(float x) {
 }
 
 float scanline(float uv, float time) {
-	return ((sin(uv * 400.0 + (time * safesign(ratio) * 100.0)) + 1.0) / 4.0) + 0.75;
+	return ((sin(uv * 400.0 + (time * -safesign(ratio) * 100.0)) + 1.0) / 4.0) + 0.75;
 }
 
 void fragment() {
-	COLOR = texture(TEXTURE, UV) * logistic_color(UV.x) + ratio_line(UV.x);
+	COLOR = texture(TEXTURE, UV) * logistic_color(UV.x);// + ratio_line(UV.x);
 	COLOR.a *= scanline(UV.x, TIME);
 	COLOR = min(COLOR, vec4(1, 1, 1, 1));
 }"
@@ -59,7 +59,7 @@ use_filter = true
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="ValueRatioDisplay" type="TextureRect"]
+[node name="ValueRatioDisplay" type="TextureRect" index="0"]
 
 material = SubResource( 2 )
 anchor_left = 0.0

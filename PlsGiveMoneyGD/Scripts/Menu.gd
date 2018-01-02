@@ -14,11 +14,11 @@ func _play():
 
 #Callback for help button, switches to the Help scene
 func _help():
-	print("To Help.tscn")
+	switcher.switch_to("res://Scenes/Help.tscn")
 
 #Callback for settings button, switches to the Settings scene
 func _settings():
-	print("To Settings.tscn")
+	switcher.switch_to("res://Scenes/Settings.tscn")
 
 #Callback for quit button, stops the program
 func _quit():

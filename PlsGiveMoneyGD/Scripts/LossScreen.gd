@@ -6,5 +6,5 @@ func _ready():
 #For 'press any key' to return to menu, enabled by the loss animation after
 #fully fading in
 func _input(ev):
-	if ev is InputEventKey or ev is InputEventMouseButton:
+	if ev is InputEventKey:
 		$"/root/SceneSwitch".switch_to("res://Scenes/Menu.tscn")

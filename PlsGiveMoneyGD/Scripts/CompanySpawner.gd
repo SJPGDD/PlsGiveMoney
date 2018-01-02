@@ -45,10 +45,13 @@ func _register_companies():
 	#company_data = CompanySpawnParams.new()
 	
 	#    REE-A
+	#company_data = CompanySpawnParams.new()
 	
 	#    Act-Revision
+	#company_data = CompanySpawnParams.new()
 	
-	#    Ubitener Get it? Ubi is where in latin, so, soft in latin, Ubi Tener
+	#    Ubitener (Get it? Ubi is where in latin, and 'soft' in latin, Ubi Tener)
+	#company_data = CompanySpawnParams.new()
 	
 	return array
 

@@ -1,0 +1,159 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Textures/Backgrounds/Space.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/BungeeDynamic.tres" type="DynamicFontData" id=2]
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Node2D
+
+func _input(ev):
+	if ev is InputEventKey:
+		$\"/root/SceneSwitch\".switch_to(\"res://Scenes/Menu.tscn\")"
+
+[sub_resource type="DynamicFontData" id=4]
+
+font_path = "res://Assets/Fonts/Bungee-Regular.ttf"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 72
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 18
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 14
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Help" type="Node2D"]
+
+script = SubResource( 2 )
+
+[node name="Background" type="Sprite" parent="." index="0"]
+
+self_modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+scale = Vector2( 3.18584, 2.99003 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="UI" type="Control" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Title" type="Label" parent="UI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 720.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.509804, 0.690196, 0.945098, 1 )
+text = "Help"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="Subtitle" type="Label" parent="UI" index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = 760.0
+margin_right = 700.0
+margin_bottom = 829.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.300903, 0.396362, 0.53125, 1 )
+text = "Press Any Key to Return to Main Menu
+"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Text" type="RichTextLabel" parent="UI" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 50.0
+margin_top = 235.0
+margin_right = 670.0
+margin_bottom = 735.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_fonts/mono_font = SubResource( 5 )
+custom_fonts/bold_italics_font = SubResource( 5 )
+custom_fonts/italics_font = SubResource( 5 )
+custom_fonts/bold_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 5 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_constants/line_separation = 10
+bbcode_enabled = true
+bbcode_text = "[center][color=#82aff0]A/D[/color] - Move Left/Right
+[color=#82aff0]Spacebar[/color] - Fire Current Projectile
+[color=#82aff0]Shift[/color] - Toggle Current Projectile
+
+Hit [color=#82f0af]Good Companies[/color] with [color=#82f0af]Money[/color], and collect their [color=#82f0af]Products[/color].
+Hit [color=#f082af]Bad Companies[/color] with [color=#f082af]Downvotes[/color], and avoid their [color=#f082af]Microtransactions[/color].
+This will increase your [color=#82aff0]Value[/color], displayed at the top of the screen.
+
+Hitting [color=#82f0af]Good Companies[/color] with [color=#f082af]Downvotes[/color], [color=#f082af]Bad Companies[/color] with [color=#82f0af]Money[/color],
+or collecting [color=#f082af]Microtransactions[/color] will lower your [color=#82aff0]Value[/color].
+
+Score increases as time passes:
+Slowly when [color=#82aff0]Value[/color] is low; Faster when [color=#82aff0]Value[/color] is high.
+
+If your [color=#82aff0]Value[/color] drops too low, the game ends.
+
+[color=#f082af]Survive as long as possible.[/color][center]
+
+"
+visible_characters = -1
+percent_visible = 1.0
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "BBCode", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "custom_colors", "custom_constants", "custom_fonts" ]
+
+

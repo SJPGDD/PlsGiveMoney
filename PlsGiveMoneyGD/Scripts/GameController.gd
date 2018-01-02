@@ -6,6 +6,7 @@ export(float) var player_hits_company = 1.0
 onready var player = $Player
 onready var background = $Background
 onready var value_ratio = $UI/ValueRatioDisplay
+onready var score = $UI/ScoreDisplay
 
 var lost = false
 
@@ -65,6 +66,9 @@ func _company_type_match(proj_type, comp_type):
 func _refresh_ui():
 	#Value Ratio Display, smoothly interpolate from the old value to the new
 	value_ratio.ratio = lerp(value_ratio.ratio, player.value_ratio.ratio, 0.07)
+	
+	#Score display, integer representation
+	score.text = str(int(player.score))
 
 func lose():
 	if lost: return; else: lost = true
