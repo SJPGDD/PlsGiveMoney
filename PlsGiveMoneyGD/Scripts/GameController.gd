@@ -5,8 +5,10 @@ export(float) var player_hits_company = 1.0
 
 onready var player = $Player
 onready var background = $Background
+onready var ui = $UI
 onready var value_ratio = $UI/ValueRatioDisplay
 onready var score = $UI/ScoreDisplay
+onready var message = load("res://Scenes/UI/Message.tscn")
 
 var lost = false
 
@@ -64,11 +66,15 @@ func _company_type_match(proj_type, comp_type):
 
 #Called every update to ensure that the UI components contain the relevant data
 func _refresh_ui():
+	var val = player.value_ratio.ratio
+	
 	#Value Ratio Display, smoothly interpolate from the old value to the new
-	value_ratio.ratio = lerp(value_ratio.ratio, player.value_ratio.ratio, 0.07)
+	value_ratio.ratio = lerp(value_ratio.ratio, val, 0.07)
 	
 	#Score display, integer representation
 	score.text = str(int(player.score))
+	val += 0.5 #Convert to 0..1 scale
+	score.self_modulate = Color(1 - val, val, 1)
 
 func lose():
 	if lost: return; else: lost = true

@@ -117,11 +117,10 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 50.0
-margin_top = 235.0
+margin_top = 285.0
 margin_right = 670.0
 margin_bottom = 735.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
@@ -149,9 +148,7 @@ Slowly when [color=#82aff0]Value[/color] is low; Faster when [color=#82aff0]Valu
 
 If your [color=#82aff0]Value[/color] drops too low, the game ends.
 
-[color=#f082af]Survive as long as possible.[/color][center]
-
-"
+[color=#f082af]Survive as long as possible.[/color][center]"
 visible_characters = -1
 percent_visible = 1.0
 override_selected_font_color = false
