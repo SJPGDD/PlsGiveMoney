@@ -2,17 +2,30 @@ extends Node2D
 
 onready var message = load("res://Scenes/UI/Message.tscn")
 
+var cache = {}
+
+func _ready():
+	cache["GreatValue"] = make("Great Value", Color(0, 1, 1))
+	cache["LowValue"] = make("Low Value", Color(1, 0, 1))
+
 func _process(delta):
 	if get_child_count() > 0:
 		get_child(0).set_process(true)
 		get_child(0).visible = true
 
-func show(text, color, approach_position = Vector2(720/2, 250)):
+func make(text, color, approach_position = Vector2(720/2, 250)):
 	var instance = message.instance()
-	instance.position = Vector2(0, approach_position.y)
 	instance.approach_position = approach_position
 	instance.modulate = color
 	instance.get_child(0).text = text
-	instance.visible = false
-	add_child(instance)
-	instance.set_process(false)
+	return instance
+
+func show(name):
+	var message = cache[name]
+	if message == null:
+		printerr("Attempted to display nonexistent message")
+		return
+	message.reset()
+	add_child(message)
+	message.visible = false
+	message.set_process(false)

@@ -21,6 +21,9 @@ var minimum
 #The threshold for emitting above_minimum
 var maximum
 
+#Stores whether the last added value put the ratio outside of the min/max range
+var last_state = 0
+
 #Property for accessing the current ratio
 var ratio setget ,_get_ratio
 
@@ -68,7 +71,13 @@ func _get_ratio():
 #the maximum or the minimum, and emits
 #the corresponding signals if needed.
 func _check_boundaries():
-	if _get_ratio() <= minimum: 
-		emit_signal("below_minimum")
+	if _get_ratio() <= minimum:
+		if last_state != -1:
+			emit_signal("below_minimum")
+			last_state = -1
 	elif _get_ratio() >= maximum:
-		emit_signal("above_maximum")
+		if last_state != 1:
+			emit_signal("above_maximum")
+			last_state = 1
+	else:
+		last_state = 0

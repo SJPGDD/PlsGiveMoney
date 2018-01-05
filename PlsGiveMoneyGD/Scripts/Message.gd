@@ -18,6 +18,13 @@ var waited = 0.0
 func _ready():
 	$Text.rect_position -= $Text.rect_size / 2
 
+func reset():
+	position = Vector2(0, approach_position.y)
+	scale = Vector2(1, 1)
+	modulate.a = 1
+	waited = 0.0
+	move_state = MoveState.APPROACH
+
 func _process(delta):
 	match move_state:
 		MoveState.APPROACH:
@@ -34,4 +41,4 @@ func _process(delta):
 			scale.y = lerp(scale.y, depart_scale.y, depart_speed)
 			modulate.a = lerp(modulate.a, 0, depart_speed)
 			if (scale - depart_scale).length() <= depart_cutoff:
-				queue_free()
+				get_parent().remove_child(self)
