@@ -1,7 +1,6 @@
 extends Position2D
 
-var text = "Message"
-var approach_position = Vector2(720/2, 250)
+var approach_position = Vector2(0, 0)
 var approach_speed = 0.1
 var approach_cutoff = 1.0
 var wait_duration = 2.0
@@ -17,7 +16,6 @@ var move_state = MoveState.APPROACH
 var waited = 0.0
 
 func _ready():
-	position.y = approach_position.y
 	$Text.rect_position -= $Text.rect_size / 2
 
 func _process(delta):
