@@ -18,6 +18,9 @@ onready var current_projectile = good_projectile
 #Seconds until next weapon fire, can be negative
 var cooldown = 0
 
+#Whether to shoot towards the mouse cursor
+var free_aim = false
+
 #Checks for weapon select, updates the cooldown
 #then checks for weapon fire
 func _process(delta):
@@ -52,4 +55,7 @@ func _weapon_fire():
 
 #Returns the unit vector pointing from the ship to the mouse cursor
 func _get_firing_direction():
-	return get_local_mouse_position().normalized()
+	if free_aim:
+		return get_local_mouse_position().normalized()
+	else:
+		return Vector2(0, -1)

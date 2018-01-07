@@ -49,11 +49,11 @@ func _velocity_for_time(time_alive):
 	return move_speed * Vector2(cos(time_alive), sin(time_alive))
 
 #If the cooldown is less than zero, and the company has a projectile,
-#and is in a scene with a player, the company will fire its projectile
-#from its current position in the direction of the player at the time
-#of the projectile's instantiation
+#and is in a scene with a player, and is on screen, the company will fire 
+#its projectile from its current position in the direction of the player 
+#at the time of the projectile's instantiation
 func _weapon_fire():
-	if cooldown <= 0 && projectile != null && player != null:
+	if cooldown <= 0 && projectile != null && player != null && get_viewport_rect().has_point(position):
 		var dir = _get_firing_direction()
 		var projectile = self.projectile.instance()
 		projectile.position = position
