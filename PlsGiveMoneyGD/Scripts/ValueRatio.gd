@@ -6,6 +6,9 @@ signal below_minimum
 #Emitted when the ratio goes above maximum in add_value
 signal above_maximum
 
+#Emitted when the ratio goes below -0.5
+signal low_warning
+
 #The set of values being tracked for the ratio
 var buffer = []
 
@@ -72,12 +75,17 @@ func _get_ratio():
 #the corresponding signals if needed.
 func _check_boundaries():
 	if _get_ratio() <= minimum:
-		if last_state != -1:
+		if last_state != -2:
 			emit_signal("below_minimum")
+			last_state = -2
+	elif _get_ratio() <= -0.5:
+		if last_state != -1:
+			emit_signal("low_warning")
 			last_state = -1
+	elif _get_ratio() >= 0.0:
+		if last_state == -1:
+			last_state = 0
 	elif _get_ratio() >= maximum:
 		if last_state != 1:
 			emit_signal("above_maximum")
 			last_state = 1
-	else:
-		last_state = 0

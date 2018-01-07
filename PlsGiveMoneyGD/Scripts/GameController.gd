@@ -23,6 +23,7 @@ enum CompanyType {
 }
 
 func _ready():
+	$"/root/MusicPlayer".play_stream(load("res://Assets/Audio/Music/Game.wav"))
 	randomize()
 
 func _process(delta):
@@ -74,7 +75,9 @@ func _refresh_ui():
 	#Score display, integer representation
 	score.text = str(int(player.score))
 	val += 0.5 #Convert to 0..1 scale
-	score.self_modulate = Color(1 - val, val, 1)
+	score.self_modulate.r = lerp(score.self_modulate.r, 1 - val, 0.1)
+	score.self_modulate.g = lerp(score.self_modulate.g, val, 0.1)
+	score.self_modulate.b = 1
 
 func lose():
 	if lost: return; else: lost = true

@@ -1,6 +1,9 @@
 extends Sprite
 
+export(int) var scroll_speed = 100 #px/sec
+
 func _process(delta):
+	_translate(delta)
 	_lerp_reset_color()
 
 #Controls the color aberration shader
@@ -27,3 +30,8 @@ func _lerp_reset_color():
 	modulate.r = lerp(modulate.r, 1.0, 0.07)
 	modulate.g = lerp(modulate.g, 1.0, 0.07)
 	modulate.b = lerp(modulate.b, 1.0, 0.07)
+
+func _translate(delta):
+	position.y += scroll_speed * delta
+	if position.y >= 900:
+		position.y = -8192 + 900

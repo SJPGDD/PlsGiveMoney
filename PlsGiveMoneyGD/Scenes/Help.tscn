@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Textures/Backgrounds/Space.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/Backgrounds/SpaceMenuSize.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/BungeeDynamic.tres" type="DynamicFontData" id=2]
 
 [sub_resource type="GDScript" id=1]
@@ -46,7 +46,6 @@ script = SubResource( 1 )
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
-self_modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
 texture = ExtResource( 1 )
 centered = false
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
@@ -121,6 +120,7 @@ margin_top = 285.0
 margin_right = 670.0
 margin_bottom = 735.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
@@ -132,7 +132,7 @@ custom_fonts/normal_font = SubResource( 5 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_constants/line_separation = 10
 bbcode_enabled = true
-bbcode_text = "[center][color=#82aff0]A/D[/color] - Move Left/Right
+bbcode_text = "[center][color=#82aff0]A/D[/color] or [color=#82aff0]Left/Right Arrow[/color] - Move Left/Right
 [color=#82aff0]Spacebar[/color] - Fire Current Projectile
 [color=#82aff0]Shift[/color] - Toggle Current Projectile
 
