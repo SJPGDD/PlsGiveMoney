@@ -34,6 +34,18 @@ tracks/1/keys = {
 "method": "_faded_in"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("/root/MusicPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 0.5 ),
+"update": 0,
+"values": [ -90.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -66,8 +78,20 @@ tracks/1/keys = {
 "method": "_faded_out"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("/root/MusicPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 2 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
 
-[node name="SceneSwitch" type="CanvasModulate"]
+[node name="SceneSwitch" type="CanvasModulate" index="0"]
 
 pause_mode = 2
 color = Color( 1, 1, 1, 1 )

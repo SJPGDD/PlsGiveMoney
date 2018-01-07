@@ -2,11 +2,8 @@ extends Node2D
 
 onready var switcher = $"/root/SceneSwitch"
 
-#Starts the scene with music properly looping.
-#TODO: Change this when loopmode import is patched.
 func _ready():
-	$Music.stream.loop_mode = 1
-	$Music.play()
+	$"/root/MusicPlayer".play_stream(load("res://Assets/Audio/Music/Menu.wav"))
 
 #Callback for play button, switches to the Game scene
 func _play():

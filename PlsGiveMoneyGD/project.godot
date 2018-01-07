@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SceneSwitch="*res://Scenes/SceneSwitch.tscn"
+MusicPlayer="*res://Scripts/MusicPlayer.gd"
 
 [display]
 

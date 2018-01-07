@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/Backgrounds/Space.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Audio/Music/Menu.wav" type="AudioStream" id=3]
 
 [sub_resource type="Shader" id=1]
 
@@ -246,14 +245,6 @@ group = null
 text = "Quit"
 flat = false
 align = 1
-
-[node name="Music" type="AudioStreamPlayer" parent="." index="3"]
-
-stream = ExtResource( 3 )
-volume_db = 0.0
-autoplay = true
-mix_target = 0
-bus = "Music"
 
 [connection signal="pressed" from="UI/MenuButtons/Play" to="." method="_play"]
 
