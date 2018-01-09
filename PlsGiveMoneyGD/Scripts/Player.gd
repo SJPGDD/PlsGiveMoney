@@ -10,7 +10,7 @@ export(Vector2) var move_speed = 480
 export(float) var movement_snap = 0.3
 
 #The number of previous companies remembered
-export(int) var ratio_buffer_size = 20
+export(int) var ratio_buffer_size = 40
 
 #The ratio at which the game is lost
 export(float) var minimum_ratio = -0.75
@@ -47,7 +47,7 @@ func spawn():
 	position = spawn
 	target_x = position.x
 	score = 0
-	value_ratio.reset(20, 0.0)
+	value_ratio.reset(ratio_buffer_size, 0.0)
 
 #Moves the player horizontally either left or
 #right based on the actions "move_left/right",

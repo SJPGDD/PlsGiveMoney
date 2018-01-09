@@ -4,7 +4,12 @@
 
 [node name="Lootbox" instance=ExtResource( 1 )]
 
+_sections_unfolded = [ "Material" ]
 type = 2
 ignore_groups = PoolStringArray( "Projectile", "Company" )
+
+[node name="Collider" parent="." index="0"]
+
+_sections_unfolded = [ "Collision" ]
 
 

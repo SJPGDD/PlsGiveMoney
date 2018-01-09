@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Ships/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Textures/Particles/Smoke.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/Ships/Player.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Ships/PlayerWeapon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Projectiles/Downvote.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -67,7 +68,7 @@ _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
+extents = Vector2( 28, 28 )
 
 [node name="Player" groups=[
 "Player",
@@ -78,7 +79,7 @@ _sections_unfolded = [ "Material" ]
 spawn = Vector2( 0, 0 )
 move_speed = 480
 movement_snap = 0.3
-ratio_buffer_size = 20
+ratio_buffer_size = 40
 minimum_ratio = -0.75
 score_per_second = 1000
 
@@ -141,5 +142,7 @@ texture = ExtResource( 4 )
 shape = SubResource( 5 )
 
 [node name="PlayerWeapon" parent="." index="4" instance=ExtResource( 5 )]
+
+bad_projectile = ExtResource( 6 )
 
 

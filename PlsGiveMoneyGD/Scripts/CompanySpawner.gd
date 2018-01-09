@@ -41,17 +41,15 @@ func _register_companies():
 	company_data.min_interval = 10
 	array.append(company_data)
 	
-	#    Buzzard (TENTATIVE PARODY NAMES)
-	#company_data = CompanySpawnParams.new()
-	
-	#    REE-A
-	#company_data = CompanySpawnParams.new()
-	
-	#    Act-Revision
-	#company_data = CompanySpawnParams.new()
-	
-	#    Ubitener (Get it? Ubi is where in latin, and 'soft' in latin, Ubi Tener)
-	#company_data = CompanySpawnParams.new()
+	#    Blizzard
+	company_data = CompanySpawnParams.new()
+	company_data.company = load("res://Scenes/Ships/Blizzard.tscn")
+	company_data.area = Rect2(100, 500, 520, 200)
+	company_data.chance = 0.015
+	company_data.group_min = 2
+	company_data.group_max = 6
+	company_data.min_interval = 30
+	array.append(company_data)
 	
 	return array
 
