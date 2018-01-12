@@ -15,10 +15,12 @@ func activate_powerup(powerup):
 	powerup.activate(player)
 	active_powerups.append(powerup)
 	messages.show(powerup.message)
+	AudioServer.set_bus_effect_enabled(1, 0, true)
 
 func deactivate_powerup(powerup):
 	powerup.deactivate(player)
 	active_powerups.erase(powerup)
+	AudioServer.set_bus_effect_enabled(1, 0, false)
 
 func _consume_durations(delta):
 	for powerup in active_powerups:

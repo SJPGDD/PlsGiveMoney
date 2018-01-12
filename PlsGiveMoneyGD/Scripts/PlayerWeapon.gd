@@ -35,6 +35,7 @@ func _weapon_select():
 	if Input.is_action_just_pressed("toggle_projectile"):
 		if current_projectile == good_projectile: current_projectile = bad_projectile
 		else: current_projectile = good_projectile
+		$"/root/Game/UI/WeaponSelected".toggle_selected()
 
 #If the "fire_projectile" action is held down and the cooldown
 #is less than zero, the weapon will fire the current_projectile

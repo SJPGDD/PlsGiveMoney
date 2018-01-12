@@ -1,36 +1,82 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Textures/Ships/Player.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Textures/Debug/32x32.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/Projectiles/Money.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/Projectiles/Downvote.png" type="Texture" id=2]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="GDScript" id=4]
 
-code = "shader_type canvas_item;
+script/source = "extends Control
 
-uniform bool active = true;
-uniform float uv_scale = 0.02;
+onready var good = $GoodWeaponIcon
+onready var bad = $BadWeaponIcon
+onready var indicator = $SelectedIndicator
 
-void fragment() {
-	float alpha_sum = 0.0;
-	for(float x = -1.0; x < 2.0; x += 1.0) {
-		for(float y = -1.0; y < 2.0; y += 1.0) {
-			alpha_sum += texture(TEXTURE, UV + vec2(x, y) * uv_scale).a;
-		}
-	}
-	COLOR = texture(TEXTURE, UV);
-	if(COLOR.a < 1.0 && active) {
-		COLOR += vec4(1, 1, 1, alpha_sum / 9.0);
-	}
-}"
+func toggle_selected():
+	if indicator.position == good.position:
+		indicator.position = bad.position
+	else:
+		indicator.position = good.position"
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=3]
 
 render_priority = 0
-shader = SubResource( 1 )
-shader_param/active = null
-shader_param/uv_scale = null
+blend_mode = 1
+light_mode = 0
 
-[node name="WeaponSelected" type="Control" index="0"]
+[sub_resource type="Curve" id=6]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+
+width = 32
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 16.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 3.0
+scale_random = 1.0
+scale_curve = SubResource( 7 )
+color = Color( 1, 1, 1, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Emission Shape", "Gravity", "Initial Velocity", "Orbit Velocity", "Scale", "Trail" ]
+
+[node name="WeaponSelected" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -42,41 +88,48 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = SubResource( 4 )
 _sections_unfolded = [ "Hint", "Rect" ]
 
-[node name="GoodWeaponIcon" type="TextureRect" parent="." index="0"]
+[node name="SelectedIndicator" type="Particles2D" parent="." index="0"]
 
-material = SubResource( 2 )
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = -48.0
-margin_right = -16.0
-margin_bottom = 32.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-size_flags_horizontal = 1
-size_flags_vertical = 1
+self_modulate = Color( 0.509804, 0.686275, 0.941176, 1 )
+material = SubResource( 3 )
+position = Vector2( 688, 16 )
+emitting = true
+amount = 3000
+lifetime = 1.0
+one_shot = false
+preprocess = 1.0
+speed_scale = 1.0
+explosiveness = 0.1
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 5 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z" ]
+
+[node name="GoodWeaponIcon" type="Sprite" parent="." index="1"]
+
+position = Vector2( 688, 16 )
+scale = Vector2( 4, 4 )
+z = 1
 texture = ExtResource( 1 )
-stretch_mode = 0
-_sections_unfolded = [ "Anchor", "Margin", "Material", "Rect" ]
+_sections_unfolded = [ "Anchor", "Margin", "Offset", "Rect", "Transform", "Z" ]
 
-[node name="BadWeaponIcon" type="TextureRect" parent="." index="1"]
+[node name="BadWeaponIcon" type="Sprite" parent="." index="2"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 16.0
-margin_right = 32.0
-margin_bottom = 32.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-size_flags_horizontal = 1
-size_flags_vertical = 1
+position = Vector2( 32, 16 )
+scale = Vector2( 4, 4 )
+z = 1
 texture = ExtResource( 2 )
-stretch_mode = 0
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Rect" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Rect", "Transform", "Z" ]
 
 
