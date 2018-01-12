@@ -1,14 +1,16 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/GameController.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/Backgrounds/SpaceGameSize.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Background.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Ships/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/CompanySpawner.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Messages.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/UI/ValueRatio.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/Fonts/BungeeDynamic.tres" type="DynamicFontData" id=8]
-[ext_resource path="res://Scenes/UI/LossScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/PowerupManager.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Ships/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/CompanySpawner.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Messages.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/UI/ValueRatio.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Fonts/BungeeDynamic.tres" type="DynamicFontData" id=9]
+[ext_resource path="res://Scenes/UI/LossScreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/UI/WeaponSelected.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Shader" id=1]
 
@@ -159,7 +161,7 @@ _sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Shadow" ]
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Game" type="Node2D" index="0"]
@@ -229,22 +231,27 @@ _sections_unfolded = [ "Drawing", "Material", "Process Material", "Time", "Trans
 
 _sections_unfolded = [ "Z" ]
 
-[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Powerup" type="Node2D" parent="." index="3"]
+
+script = ExtResource( 4 )
+
+[node name="Player" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 2.08325, -4.16681 )
 _sections_unfolded = [ "Material", "Pause", "Z" ]
 spawn = Vector2( 360, 800 )
+powerup_after_score = 200000
 
-[node name="Companies" type="Node2D" parent="." index="4"]
-
-script = ExtResource( 5 )
-_sections_unfolded = [ "Z" ]
-
-[node name="Messages" type="Node2D" parent="." index="5"]
+[node name="Companies" type="Node2D" parent="." index="5"]
 
 script = ExtResource( 6 )
+_sections_unfolded = [ "Z" ]
 
-[node name="UI" type="Control" parent="." index="6"]
+[node name="Messages" type="Node2D" parent="." index="6"]
+
+script = ExtResource( 7 )
+
+[node name="UI" type="Control" parent="." index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -273,7 +280,7 @@ size_flags_vertical = 1
 custom_styles/panel = SubResource( 10 )
 _sections_unfolded = [ "Rect", "Size Flags", "Theme", "custom_styles" ]
 
-[node name="ValueRatioDisplay" parent="UI" index="1" instance=ExtResource( 7 )]
+[node name="ValueRatioDisplay" parent="UI" index="1" instance=ExtResource( 8 )]
 
 anchor_left = 0.5
 anchor_right = 0.5
@@ -304,6 +311,11 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Material", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
-[node name="LossScreen" parent="UI" index="3" instance=ExtResource( 9 )]
+[node name="LossScreen" parent="UI" index="3" instance=ExtResource( 10 )]
+
+[node name="WeaponSelected" parent="UI" index="4" instance=ExtResource( 11 )]
+
+margin_top = 54.0
+margin_bottom = 86.0
 
 

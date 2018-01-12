@@ -1,5 +1,7 @@
 extends Node2D
 
+signal reached_powerup
+
 #Position when the player spawns
 export(Vector2) var spawn = Vector2(0, 0)
 
@@ -17,6 +19,9 @@ export(float) var minimum_ratio = -0.75
 
 #Points/sec when value ratio is 1.0
 export(int) var score_per_second = 1_000
+
+#The amount of score that must be earned for a random powerup
+export(int) var powerup_after_score = 200_000
 
 #Instance of ValueRatio class, which is created using the above init values
 onready var value_ratio = load("res://Scripts/ValueRatio.gd").new(ratio_buffer_size, 0, minimum_ratio, 1.0)
@@ -69,4 +74,7 @@ func _clamp_to_screen():
 	target_x = clamp(target_x, tex_half_width, screen_width - tex_half_width)
 
 func _increase_score(delta):
+	var score_mod = fmod(score, powerup_after_score)
 	score += score_per_second * (value_ratio.ratio + 1) * delta
+	if fmod(score, powerup_after_score) < score_mod:
+		emit_signal("reached_powerup")

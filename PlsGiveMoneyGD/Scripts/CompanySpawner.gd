@@ -31,20 +31,10 @@ func _register_companies():
 	var array = []
 	var company_data
 	
-	#    Generic Company (Debug)
-	company_data = CompanySpawnParams.new()
-	company_data.company = load("res://Scenes/Ships/Company.tscn")
-	company_data.area = Rect2(0, 0, 720, 400)
-	company_data.chance = 0.007
-	company_data.group_min = 1
-	company_data.group_max = 4
-	company_data.min_interval = 10
-	array.append(company_data)
-	
 	#    Blizzard
 	company_data = CompanySpawnParams.new()
 	company_data.company = load("res://Scenes/Ships/Blizzard.tscn")
-	company_data.area = Rect2(100, 500, 520, 200)
+	company_data.area = Rect2(100, 100, 520, 200)
 	company_data.chance = 0.015
 	company_data.group_min = 2
 	company_data.group_max = 6
