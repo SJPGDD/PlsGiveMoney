@@ -9,6 +9,8 @@ func _ready():
 	cache["LowValue"] = make("Danger: Low Value", Color(1, 0, 1))
 	cache["DoubleScore"] = make("2x Score!", Color(0, 0.75, 1.0))
 	cache["FreeValue"] = make("Free Value!", Color(0, 0.75, 1.0))
+	cache["SpeedBoost"] = make("Speed Boost!", Color(0, 0.75, 1.0))
+	cache["FreeAim"] = make("Free Aim!", Color(0, 0.75, 1.0))
 
 func _process(delta):
 	if get_child_count() > 0:
@@ -22,8 +24,8 @@ func make(text, color, approach_position = Vector2(720/2, 250)):
 	instance.get_child(0).text = text
 	return instance
 
-func show(name):
-	var message = cache[name]
+func show(message_name):
+	var message = cache[message_name]
 	if message == null:
 		printerr("Attempted to display nonexistent message")
 		return

@@ -50,6 +50,7 @@ shader_param/ratio = 0.0
 shader_param/multiplier = 10.0
 shader_param/left_color = Vector3( 1, 0, 1 )
 shader_param/right_color = Vector3( 0, 1, 1 )
+_sections_unfolded = [ "Resource", "shader_param" ]
 
 [sub_resource type="DynamicFont" id=3]
 
@@ -71,6 +72,7 @@ margin_bottom = 100.0
 rect_scale = Vector2( 1, 0.25 )
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 1
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 1 )
@@ -90,6 +92,7 @@ margin_bottom = 1.0
 rect_scale = Vector2( 1, 4 )
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 3 )
@@ -113,6 +116,7 @@ margin_bottom = 1.0
 rect_scale = Vector2( 1, 4 )
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 3 )

@@ -16,7 +16,7 @@ func activate_powerup(powerup):
 	powerup.activate(player)
 	active_powerups.append(powerup)
 	messages.show(powerup.message)
-	active.emitting = true
+	if powerup.duration > 0: active.emitting = true
 
 func deactivate_powerup(powerup):
 	powerup.deactivate(player)
@@ -30,7 +30,7 @@ func _consume_durations(delta):
 			deactivate_powerup(powerup)
 
 func _choose_random_powerup():
-	var types = [DoubleScorePowerup, FreeValuePowerup]
+	var types = [DoubleScorePowerup, FreeValuePowerup, SpeedBoostPowerup, FreeAimPowerup]
 	activate_powerup(types[randi() % types.size()].new(player))
 
 class Powerup extends Reference:
@@ -61,3 +61,22 @@ class FreeValuePowerup extends Powerup:
 	func activate(player):
 		replacement_value.reset(player.ratio_buffer_size, 0.75)
 		.activate(player)
+
+class SpeedBoostPowerup extends Powerup:
+	func _init(player):
+		message = "SpeedBoost"
+		target_var = "move_speed"
+		restoring_value = player.move_speed
+		replacement_value = restoring_value * 1.5
+		duration = 60
+
+class FreeAimPowerup extends Powerup:
+	func _init(player):
+		message = "FreeAim"
+		duration = 60
+	
+	func activate(player):
+		player.get_node("PlayerWeapon").free_aim = true
+	
+	func deactivate(player):
+		player.get_node("PlayerWeapon").free_aim = false
