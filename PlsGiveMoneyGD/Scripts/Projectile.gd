@@ -18,7 +18,11 @@ export(PoolStringArray) var ignore_groups = []
 
 #Moves the projectile by its velocity * delta
 func _process(delta):
-	position += velocity * delta 
+	match type:
+		ProjectileType.PLAYER_BAD, ProjectileType.PLAYER_GOOD:
+			position += velocity * delta / Engine.time_scale
+		ProjectileType.COMPANY_GOOD, ProjectileType.COMPANY_BAD, ProjectileType.NONE:
+			position += velocity * delta
 
 #Called when the collision with this projectile and something else is handled
 func destroy():

@@ -5,6 +5,7 @@ onready var messages = $"/root/Game/Messages"
 onready var active = $"/root/Game/PowerupActive"
 
 var active_powerups = []
+var types = [DoubleScorePowerup, SpeedBoostPowerup, BulletTimePowerup, ImaFirinMaLazorPowerup]
 
 func _ready():
 	player.connect("reached_powerup", self, "_choose_random_powerup")
@@ -21,7 +22,7 @@ func activate_powerup(powerup):
 func deactivate_powerup(powerup):
 	powerup.deactivate(player)
 	active_powerups.erase(powerup)
-	active.emitting = false
+	if active_powerups.size() == 0: active.emitting = false
 
 func _consume_durations(delta):
 	for powerup in active_powerups:
@@ -30,8 +31,20 @@ func _consume_durations(delta):
 			deactivate_powerup(powerup)
 
 func _choose_random_powerup():
-	var types = [DoubleScorePowerup, FreeValuePowerup, SpeedBoostPowerup, FreeAimPowerup]
-	activate_powerup(types[randi() % types.size()].new(player))
+	if active_powerups.size() == types.size(): return
+	
+	var type = types[randi() % types.size()]
+	
+	while _type_is_active(type):
+		type = types[randi() % types.size()]
+	
+	activate_powerup(type.new(player))
+
+func _type_is_active(type):
+	for powerup in active_powerups:
+		if powerup is type:
+			return true
+	return false
 
 class Powerup extends Reference:
 	var message
@@ -80,3 +93,31 @@ class FreeAimPowerup extends Powerup:
 	
 	func deactivate(player):
 		player.get_node("PlayerWeapon").free_aim = false
+
+class BulletTimePowerup extends Powerup:
+	func _init(player):
+		message = "BulletTime"
+		duration = 60
+	
+	func activate(player):
+		Engine.time_scale = 0.25
+	
+	func deactivate(player):
+		Engine.time_scale = 1.0
+
+class ImaFirinMaLazorPowerup extends Powerup:
+	var weapon
+	
+	func _init(player):
+		weapon = player.get_node("PlayerWeapon")
+		message = "FirinMaLazor"
+		restoring_value = weapon.firing_rate
+		duration = 60
+	
+	func activate(player):
+		weapon.firing_rate = 100
+		weapon.spread = 0.5
+	
+	func deactivate(player):
+		weapon.firing_rate = restoring_value
+		weapon.spread = 0.1

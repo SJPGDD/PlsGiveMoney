@@ -7,4 +7,5 @@ func _ready():
 #fully fading in
 func _input(ev):
 	if ev is InputEventKey:
+		Engine.time_scale = 1.0
 		$"/root/SceneSwitch".switch_to("res://Scenes/Menu.tscn", true)

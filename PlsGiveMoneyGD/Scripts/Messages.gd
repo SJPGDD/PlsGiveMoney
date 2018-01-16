@@ -8,9 +8,11 @@ func _ready():
 	cache["GreatValue"] = make("Great Value", Color(0, 1, 1))
 	cache["LowValue"] = make("Danger: Low Value", Color(1, 0, 1))
 	cache["DoubleScore"] = make("2x Score!", Color(0, 0.75, 1.0))
-	cache["FreeValue"] = make("Free Value!", Color(0, 0.75, 1.0))
+	#cache["FreeValue"] = make("Free Value!", Color(0, 0.75, 1.0))
 	cache["SpeedBoost"] = make("Speed Boost!", Color(0, 0.75, 1.0))
-	cache["FreeAim"] = make("Free Aim!", Color(0, 0.75, 1.0))
+	#cache["FreeAim"] = make("Free Aim!", Color(0, 0.75, 1.0))
+	cache["BulletTime"] = make("Bullet Time!", Color(0, 0.75, 1.0))
+	cache["FirinMaLazor"] = make("Firin' Ma Lazor!", Color(0, 0.75, 1.0))
 
 func _process(delta):
 	if get_child_count() > 0:

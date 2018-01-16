@@ -21,11 +21,14 @@ var cooldown = 0
 #Whether to shoot towards the mouse cursor
 var free_aim = false
 
+#Angle variance from shot to shot, random
+var spread = 0.1
+
 #Checks for weapon select, updates the cooldown
 #then checks for weapon fire
 func _process(delta):
 	_weapon_select()
-	cooldown -= delta
+	cooldown -= delta / Engine.time_scale
 	_weapon_fire()
 
 #If the "toggle_projectile" action is just pressed, then
@@ -59,4 +62,4 @@ func _get_firing_direction():
 	if free_aim:
 		return get_local_mouse_position().normalized()
 	else:
-		return Vector2(0, -1)
+		return Vector2(0, -1).rotated(rand_range(-spread, spread))

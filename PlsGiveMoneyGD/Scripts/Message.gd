@@ -33,7 +33,7 @@ func _process(delta):
 			if (position - approach_position).length() <= approach_cutoff:
 				move_state = MoveState.WAIT; return
 		MoveState.WAIT:
-			waited += delta
+			waited += delta / Engine.time_scale
 			if waited >= wait_duration:
 				move_state = MoveState.DEPART; return
 		MoveState.DEPART:

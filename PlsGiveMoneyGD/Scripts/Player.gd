@@ -45,6 +45,7 @@ func _process(delta):
 	_move_horizontally(delta)
 	_clamp_to_screen()
 	_increase_score(delta)
+	if Input.is_action_just_pressed("cheat"): score += 190_000 #TODO: DELETE MONIKA
 
 #Sets position to the spawn position, sets score to 0,
 #and restores the value ratio to its initial state
@@ -59,9 +60,9 @@ func spawn():
 #adjusted for move_speed and delta, and interpolated over time
 func _move_horizontally(delta):
 	if Input.is_action_pressed("move_left"):
-		target_x -= move_speed * delta
+		target_x -= move_speed * delta / Engine.time_scale
 	elif Input.is_action_pressed("move_right"):
-		target_x += move_speed * delta
+		target_x += move_speed * delta / Engine.time_scale
 	position.x = lerp(position.x, target_x, movement_snap)
 
 #Ensures that the player is always completely on
