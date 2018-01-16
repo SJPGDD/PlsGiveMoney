@@ -8,6 +8,9 @@ enum CompanyType {
 #Velocity in px/sec
 export(int) var move_speed = 480
 
+#Spin in deg/sec
+export(float) var spin_speed = 0
+
 #Configurable variable for this company's type
 export(CompanyType) var type
 
@@ -35,6 +38,7 @@ var cooldown = 0
 func _process(delta):
 	time_alive += delta
 	position += _velocity_for_time(time_alive) * delta
+	rotation_degrees += spin_speed * delta
 	cooldown -= delta
 	_weapon_fire()
 
