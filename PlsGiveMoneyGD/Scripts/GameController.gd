@@ -7,6 +7,7 @@ onready var player = $Player
 onready var background = $Background
 onready var ui = $UI
 onready var value_ratio = $UI/ValueRatioDisplay
+onready var numeric_value_ratio = $UI/NumericValueRatioDisplay
 onready var score = $UI/ScoreDisplay
 onready var message = load("res://Scenes/UI/Message.tscn")
 
@@ -71,10 +72,13 @@ func _refresh_ui():
 	
 	#Score display, integer representation
 	score.text = str(int(player.score))
-	val += 0.5 #Convert to 0..1 scale
-	score.self_modulate.r = lerp(score.self_modulate.r, 1 - val, 0.1)
-	score.self_modulate.g = lerp(score.self_modulate.g, val, 0.1)
+	score.self_modulate.r = lerp(score.self_modulate.r, 1 - val - 0.5, 0.1)
+	score.self_modulate.g = lerp(score.self_modulate.g, val + 0.5, 0.1)
 	score.self_modulate.b = 1
+	
+	#Numeric Value Ratio Display
+	var current = value_ratio.ratio
+	numeric_value_ratio.text = str(int(current * 100))
 
 func lose():
 	if lost: return; else: lost = true

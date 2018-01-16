@@ -39,7 +39,7 @@ tracks/2/path = NodePath("/root/MusicPlayer:volume_db")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 0.5 ),
@@ -83,7 +83,7 @@ tracks/2/path = NodePath("/root/MusicPlayer:volume_db")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 2 ),
@@ -91,7 +91,7 @@ tracks/2/keys = {
 "values": [ 0.0, -90.0 ]
 }
 
-[node name="SceneSwitch" type="CanvasModulate" index="0"]
+[node name="SceneSwitch" type="CanvasModulate"]
 
 pause_mode = 2
 color = Color( 1, 1, 1, 1 )

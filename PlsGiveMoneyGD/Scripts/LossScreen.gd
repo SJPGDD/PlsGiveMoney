@@ -7,4 +7,4 @@ func _ready():
 #fully fading in
 func _input(ev):
 	if ev is InputEventKey:
-		$"/root/SceneSwitch".switch_to("res://Scenes/Menu.tscn")
+		$"/root/SceneSwitch".switch_to("res://Scenes/Menu.tscn", true)

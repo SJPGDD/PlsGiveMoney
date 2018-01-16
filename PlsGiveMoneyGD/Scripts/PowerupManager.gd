@@ -2,6 +2,7 @@ extends Node2D
 
 onready var player = $"/root/Game/Player"
 onready var messages = $"/root/Game/Messages"
+onready var active = $"/root/Game/PowerupActive"
 
 var active_powerups = []
 
@@ -15,12 +16,12 @@ func activate_powerup(powerup):
 	powerup.activate(player)
 	active_powerups.append(powerup)
 	messages.show(powerup.message)
-	AudioServer.set_bus_effect_enabled(1, 0, true)
+	active.emitting = true
 
 func deactivate_powerup(powerup):
 	powerup.deactivate(player)
 	active_powerups.erase(powerup)
-	AudioServer.set_bus_effect_enabled(1, 0, false)
+	active.emitting = false
 
 func _consume_durations(delta):
 	for powerup in active_powerups:

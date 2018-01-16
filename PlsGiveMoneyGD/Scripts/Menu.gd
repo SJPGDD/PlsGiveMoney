@@ -7,7 +7,7 @@ func _ready():
 
 #Callback for play button, switches to the Game scene
 func _play():
-	switcher.switch_to("res://Scenes/Game.tscn")
+	switcher.switch_to("res://Scenes/Game.tscn", true)
 
 #Callback for help button, switches to the Help scene
 func _help():

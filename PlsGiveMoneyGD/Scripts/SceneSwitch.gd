@@ -7,7 +7,9 @@ var target_scene = null
 
 #Sets the target scene path to the scene param, then pauses the tree
 #to ensure that the current scene stops updating while it fades out.
-func switch_to(scene):
+func switch_to(scene, fade_music = false):
+	$Fade.get_animation("FadeOut").track_set_enabled(2, fade_music)
+	$Fade.get_animation("FadeIn").track_set_enabled(2, fade_music)
 	target_scene = scene
 	get_tree().set_pause(true)
 	$Fade.play("FadeOut")

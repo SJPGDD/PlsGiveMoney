@@ -33,7 +33,7 @@ float safesign(float x) {
 }
 
 float scanline(float uv, float time) {
-	return ((sin(uv * 400.0 + (time * -safesign(ratio) * 100.0)) + 1.0) / 4.0) + 0.75;
+	return ((sin(uv * 10.0 + (time * -safesign(ratio) * 10.0)) + 1.0) / 4.0) + 0.75;
 }
 
 void fragment() {
