@@ -1,5 +1,7 @@
 extends Node2D
 
+export(int) var maximum_companies = 15
+
 onready var company_spawn_data = _register_companies()
 
 func _process(delta):
@@ -19,6 +21,7 @@ func _run_spawner(delta):
 			var ap = data.area.position
 			var ad = data.area.size
 			for i in int(rand_range(data.group_min, data.group_max + 1)):
+				if get_child_count() >= maximum_companies: return
 				var company = data.company.instance()
 				company.position.x = rand_range(ap.x, ap.x + ad.x)
 				company.position.y = rand_range(ap.y, ap.y + ad.y)
@@ -35,10 +38,20 @@ func _register_companies():
 	company_data = CompanySpawnParams.new()
 	company_data.company = load("res://Scenes/Ships/Blizzard.tscn")
 	company_data.area = Rect2(100, 100, 520, 200)
-	company_data.chance = 0.03
+	company_data.chance = 0.01
 	company_data.group_min = 2
 	company_data.group_max = 6
 	company_data.min_interval = 10
+	array.append(company_data)
+	
+	#    Ubisoft
+	company_data = CompanySpawnParams.new()
+	company_data.company = load("res://Scenes/Ships/Ubisoft.tscn")
+	company_data.area = Rect2(300, 100, 120, 300)
+	company_data.chance = 0.015
+	company_data.group_min = 1
+	company_data.group_max = 3
+	company_data.min_interval = 15
 	array.append(company_data)
 	
 	return array

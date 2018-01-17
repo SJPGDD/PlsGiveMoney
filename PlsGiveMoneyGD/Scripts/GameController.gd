@@ -2,6 +2,7 @@ extends Node2D
 
 export(float) var company_hits_player = 1.0
 export(float) var player_hits_company = 1.0
+export(float) var value_divisor = 4.0
 
 onready var player = $Player
 onready var background = $Background
@@ -39,7 +40,7 @@ func handle_collision(projectile, target):
 	match projectile.type:
 		ProjectileType.COMPANY_GOOD:
 			if target == player: 
-				player.value_ratio.add_value(company_hits_player)
+				player.value_ratio.add_value(company_hits_player / value_divisor)
 		ProjectileType.COMPANY_BAD:
 			if target == player: 
 				player.value_ratio.add_value(-company_hits_player)
@@ -51,7 +52,7 @@ func handle_collision(projectile, target):
 					player.value_ratio.add_value(player_hits_company)
 					target.destroy()
 				else:
-					player.value_ratio.add_value(-player_hits_company)
+					player.value_ratio.add_value(-player_hits_company / value_divisor)
 					background.glitch(10, -10, 0.2)
 					background.color_jump(Color(1, 0.5, 0.5))
 	projectile.destroy()
@@ -78,7 +79,7 @@ func _refresh_ui():
 	
 	#Numeric Value Ratio Display
 	var current = value_ratio.ratio
-	numeric_value_ratio.text = str(int(current * 100))
+	numeric_value_ratio.text = str(int(round(current * 100)))
 
 func lose():
 	if lost: return; else: lost = true

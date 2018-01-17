@@ -2,7 +2,7 @@ extends Node2D
 
 onready var player = $"/root/Game/Player"
 onready var messages = $"/root/Game/Messages"
-onready var active = $"/root/Game/PowerupActive"
+onready var active = $PowerupActive
 
 var active_powerups = []
 var types = [DoubleScorePowerup, SpeedBoostPowerup, BulletTimePowerup, ImaFirinMaLazorPowerup]
@@ -97,7 +97,7 @@ class FreeAimPowerup extends Powerup:
 class BulletTimePowerup extends Powerup:
 	func _init(player):
 		message = "BulletTime"
-		duration = 60
+		duration = 15 #Because time passes four times slower
 	
 	func activate(player):
 		Engine.time_scale = 0.25

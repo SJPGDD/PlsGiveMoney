@@ -12,7 +12,7 @@ export(Vector2) var move_speed = 480
 export(float) var movement_snap = 0.3
 
 #The number of previous companies remembered
-export(int) var ratio_buffer_size = 40
+export(int) var ratio_divisor = 100
 
 #The ratio at which the game is lost
 export(float) var minimum_ratio = -0.75
@@ -24,7 +24,7 @@ export(int) var score_per_second = 1_000
 export(int) var powerup_after_score = 200_000
 
 #Instance of ValueRatio class, which is created using the above init values
-onready var value_ratio = load("res://Scripts/ValueRatio.gd").new(ratio_buffer_size, 0, minimum_ratio, 1.0)
+onready var value_ratio = load("res://Scripts/ValueRatio.gd").new(ratio_divisor, 0, minimum_ratio, 1.0)
 
 #Current number of points the player earned in this run
 var score = 0
@@ -53,7 +53,7 @@ func spawn():
 	position = spawn
 	target_x = position.x
 	score = 0
-	value_ratio.reset(ratio_buffer_size, 0.0)
+	value_ratio.reset(ratio_divisor, 0.0)
 
 #Moves the player horizontally either left or
 #right based on the actions "move_left/right",

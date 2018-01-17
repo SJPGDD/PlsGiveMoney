@@ -1,12 +1,44 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Ships/Company.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Textures/Ships/Blizzard.png" type="Texture" id=2]
 
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends \"res://Scripts/Company.gd\"
+
+const Blink = preload(\"res://Scenes/Effects/Blink.tscn\")
+
+onready var effects = $\"/root/Game/Effects\"
+
+func _process(delta):
+	._process(delta)
+	_constrain_position()
+
+func _velocity_for_time(time_alive):
+	if rand_range(0, 100) < 1:
+		_play_blink()
+		return Vector2(rand_range(-1, 1) * move_speed, rand_range(-1, 1) * move_speed) * 100 #counter delta
+	return Vector2(0, 0)
+
+func _constrain_position():
+	if !get_viewport_rect().has_point(position):
+		position.x = 100 + 520 * rand_range(0, 1)
+		position.y = 100 + 400 * rand_range(0, 1)
+
+func _get_firing_direction():
+	return Vector2(0, 1)
+
+func _play_blink():
+	var blink = Blink.instance()
+	blink.position = position
+	effects.add_child(blink)"
+
 [node name="Blizzard" instance=ExtResource( 1 )]
 
+script = SubResource( 1 )
 _sections_unfolded = [ "Material", "Visibility" ]
-move_speed = 200
+move_speed = 480
 spin_speed = 180.0
 type = 1
 
