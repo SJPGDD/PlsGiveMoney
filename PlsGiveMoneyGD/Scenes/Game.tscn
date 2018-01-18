@@ -95,7 +95,7 @@ trail_divisor = 200
 trail_size_modifier = SubResource( 8 )
 trail_color_modifier = SubResource( 6 )
 emission_shape = 2
-emission_box_extents = Vector3( 1, 360, 1 )
+emission_box_extents = Vector3( 1, 350, 1 )
 flag_align_y = false
 flag_rotate_y = false
 flag_disable_z = true
@@ -246,7 +246,7 @@ use_filter = false
 font_data = ExtResource( 10 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 company_hits_player = 1.0
@@ -357,7 +357,7 @@ powerup_after_score = 200000
 
 script = ExtResource( 7 )
 _sections_unfolded = [ "Z" ]
-maximum_companies = 15
+maximum_companies = 10
 
 [node name="Messages" type="Node2D" parent="." index="7"]
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-export(int) var maximum_companies = 15
+export(int) var maximum_companies = 10
 
 onready var company_spawn_data = _register_companies()
 
@@ -39,8 +39,8 @@ func _register_companies():
 	company_data.company = load("res://Scenes/Ships/Blizzard.tscn")
 	company_data.area = Rect2(100, 100, 520, 200)
 	company_data.chance = 0.01
-	company_data.group_min = 2
-	company_data.group_max = 6
+	company_data.group_min = 1
+	company_data.group_max = 3
 	company_data.min_interval = 10
 	array.append(company_data)
 	
@@ -52,6 +52,26 @@ func _register_companies():
 	company_data.group_min = 1
 	company_data.group_max = 3
 	company_data.min_interval = 15
+	array.append(company_data)
+	
+	#    Rockstar
+	company_data = CompanySpawnParams.new()
+	company_data.company = load("res://Scenes/Ships/Rockstar.tscn")
+	company_data.area = Rect2(600, 100, 100, 300)
+	company_data.chance = 0.02
+	company_data.group_min = 1
+	company_data.group_max = 3
+	company_data.min_interval = 10
+	array.append(company_data)
+	
+	#    EA
+	company_data = CompanySpawnParams.new()
+	company_data.company = load("res://Scenes/Ships/EA.tscn")
+	company_data.area = Rect2(100, 100, 100, 300)
+	company_data.chance = 0.01
+	company_data.group_min = 1
+	company_data.group_max = 3
+	company_data.min_interval = 5
 	array.append(company_data)
 	
 	return array
