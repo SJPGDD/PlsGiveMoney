@@ -8,7 +8,11 @@
 script/source = "extends \"res://Scripts/Company.gd\"
 
 func _get_firing_direction():
-	return Vector2(0, 1).rotated(rand_range(-1, 1))"
+	return Vector2(0, 1).rotated(rand_range(-1, 1))
+
+func _velocity_for_time(time_alive):
+	if position.x < -100: queue_free()
+	return Vector2(-move_speed, 0)"
 
 [node name="Rockstar" instance=ExtResource( 1 )]
 

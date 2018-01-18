@@ -1,5 +1,7 @@
 extends Node2D
 
+const Explosion = preload("res://Scenes/Effects/Explosion.tscn")
+
 #The different types of company
 enum CompanyType {
 	NONE, GOOD, BAD
@@ -26,6 +28,8 @@ export(int) var firing_rate = 1
 #Cached access to the player, for position tracking
 onready var player = $"/root/Game/Player"
 
+onready var effects = $"/root/Game/Effects"
+
 #Tracks how long this company has existed, for velocity over time
 var time_alive = 0
 
@@ -44,7 +48,11 @@ func _process(delta):
 
 #Called by player when a collision warranting this company's removal
 #from the scene occurs (eg bad player projectile on bad company)
-func destroy():
+func destroy(color):
+	var ex = Explosion.instance()
+	ex.position = position
+	ex.process_material.color = color
+	effects.add_child(ex)
 	queue_free()
 
 #Returns the velocity vector for the given time. Default implementation

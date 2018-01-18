@@ -9,8 +9,6 @@ script/source = "extends \"res://Scripts/Company.gd\"
 
 const Blink = preload(\"res://Scenes/Effects/Blink.tscn\")
 
-onready var effects = $\"/root/Game/Effects\"
-
 func _process(delta):
 	._process(delta)
 	_constrain_position()

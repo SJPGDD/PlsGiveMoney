@@ -22,7 +22,7 @@ var cooldown = 0
 var free_aim = false
 
 #Angle variance from shot to shot, random
-var spread = 0.1
+var spread = 0.05
 
 #Checks for weapon select, updates the cooldown
 #then checks for weapon fire
