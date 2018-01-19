@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GoodHit.wav-dea6f0ba4af4ccb3235d53184997110a.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sounds/GoodHit.wav"
+source_md5="e2b06c6ddc976a02c46ab8b84e084687"
+
+dest_files=[ "res://.import/GoodHit.wav-dea6f0ba4af4ccb3235d53184997110a.sample" ]
+dest_md5="9b54ca0c50a303a02e2b45c036b128a2"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

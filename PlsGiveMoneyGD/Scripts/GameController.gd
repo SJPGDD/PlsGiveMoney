@@ -50,12 +50,12 @@ func handle_collision(projectile, target):
 			if target.is_in_group("Company"):
 				if _company_type_match(projectile.type, target.type):
 					player.value_ratio.add_value(player_hits_company)
-					target.destroy(Color(0, 1, 1, 0.1))
+					target.destroy(true)
 				else:
 					player.value_ratio.add_value(-player_hits_company / value_divisor)
 					background.glitch(10, -10, 0.2)
 					background.color_jump(Color(1, 0.5, 0.5))
-					target.destroy(Color(1, 0, 1, 0.1))
+					target.destroy(false)
 	projectile.destroy()
 
 #Returns whether a good projectile hit a good company or a bad projectile

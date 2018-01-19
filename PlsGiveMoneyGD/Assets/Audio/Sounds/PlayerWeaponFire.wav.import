@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PlayerWeaponFire.wav-f9e8f76346031a1f8a6b827baf9ce091.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sounds/PlayerWeaponFire.wav"
+source_md5="1309fd652fcc57f0d65ebf3c86bc3108"
+
+dest_files=[ "res://.import/PlayerWeaponFire.wav-f9e8f76346031a1f8a6b827baf9ce091.sample" ]
+dest_md5="fdbd051ff9a4c2adce952ff08433b200"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

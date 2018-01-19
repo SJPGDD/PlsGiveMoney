@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BadHit.wav-cdf502204a366d200478a4ddec13b3cd.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sounds/BadHit.wav"
+source_md5="5b49c4336cc49614ea8cb40a3bf418c0"
+
+dest_files=[ "res://.import/BadHit.wav-cdf502204a366d200478a4ddec13b3cd.sample" ]
+dest_md5="75147fc534b72b95805a196ae26db083"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

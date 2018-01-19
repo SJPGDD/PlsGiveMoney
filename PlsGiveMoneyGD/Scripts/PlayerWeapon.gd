@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 #Velocity of a projectile in px/sec
 export(int) var projectile_speed

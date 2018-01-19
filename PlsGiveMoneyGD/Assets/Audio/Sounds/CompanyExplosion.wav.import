@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/CompanyExplosion.wav-ca601d8619c5e64a0cde6839d9693e75.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sounds/CompanyExplosion.wav"
+source_md5="39304680d05d1cd758724aa0d1901765"
+
+dest_files=[ "res://.import/CompanyExplosion.wav-ca601d8619c5e64a0cde6839d9693e75.sample" ]
+dest_md5="782a36d94c2155cdeea6039592815e15"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

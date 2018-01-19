@@ -48,10 +48,15 @@ func _process(delta):
 
 #Called by player when a collision warranting this company's removal
 #from the scene occurs (eg bad player projectile on bad company)
-func destroy(color):
+func destroy(is_good):
 	var ex = Explosion.instance()
 	ex.position = position
-	ex.process_material.color = color
+	if is_good:
+		ex.process_material.color = Color(0, 1, 1, 0.05)
+		ex.get_node("GoodHitSound").play()
+	else:
+		ex.process_material.color = Color(1, 0, 1, 0.05)
+		ex.get_node("BadHitSound").play()
 	effects.add_child(ex)
 	queue_free()
 

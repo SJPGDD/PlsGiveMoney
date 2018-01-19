@@ -14,13 +14,10 @@ func _process(delta):
 	_constrain_position()
 
 func _velocity_for_time(time_alive):
-	if rand_range(0, 100) < 1:
-		_play_blink()
-		return Vector2(rand_range(-1, 1) * move_speed, rand_range(-1, 1) * move_speed) * 100 #counter delta
 	return Vector2(0, 0)
 
 func _constrain_position():
-	if !get_viewport_rect().has_point(position):
+	if rand_range(0, 100) < 1:
 		position.x = 100 + 520 * rand_range(0, 1)
 		position.y = 100 + 400 * rand_range(0, 1)
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/PlayerWeapon.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Projectiles/Money.tscn" type="PackedScene" id=2]
 
-[node name="PlayerWeapon" type="Sprite" index="0"]
+[node name="PlayerWeapon" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 projectile_speed = 1000
