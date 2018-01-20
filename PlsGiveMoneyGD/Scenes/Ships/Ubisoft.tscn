@@ -1,28 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Ships/Company.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Textures/Ships/Ubisoft.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Projectiles/Overwatch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Textures/Ships/Ubisoft.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends \"res://Scripts/Company.gd\"
 
 func _velocity_for_time(time_alive):
-	return Vector2(sin(time_alive + get_instance_id()), 0)
+	return move_speed * Vector2(sin(2 * time_alive + get_instance_id()), 0)
 
 func _get_firing_direction():
 	return Vector2(0, 1)"
 
-[node name="Ubisoft" instance=ExtResource( 1 )]
+[node name="Ubisoft" index="0" instance=ExtResource( 1 )]
 
 script = SubResource( 1 )
 move_speed = 480
 spin_speed = 90.0
 type = 1
+projectile = ExtResource( 2 )
 firing_rate = 5
 
 [node name="Sprite" parent="." index="0"]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 
