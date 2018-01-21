@@ -37,7 +37,7 @@ func _ready():
 	spawn()
 	value_ratio.connect("below_minimum", $"/root/Game", "lose")
 	value_ratio.connect("low_warning", $"/root/Game/Messages", "show", ["LowValue"])
-	value_ratio.connect("above_maximum", $"/root/Game/Messages", "show", ["GreatValue"])
+	#value_ratio.connect("above_maximum", $"/root/Game/Messages", "show", ["GreatValue"])
 
 #Updates horizontal position, increments score,
 #and updates debug display as needed
